@@ -16,7 +16,15 @@ struct DeeplinkDetailsView: View {
                 Spacer()
                 
                 Button {
-                    AppDeeplinkOpener().openDeeplink("shopback://challenge?code=T4498609")
+                    AppDeeplinkOpener().openDeeplink(
+                        "shopback://challenge?code=T4498609",
+                        on: Simulator(
+                            version: "16.0",
+                            name: "iPhone 14 (BCDEF12-34567890ABCDEF12)",
+                            uuid: "BCDEF12-34567890ABCDEF12",
+                            state: .shutdown
+                        )
+                    )
                 } label: {
                     HStack {
                         Spacer()

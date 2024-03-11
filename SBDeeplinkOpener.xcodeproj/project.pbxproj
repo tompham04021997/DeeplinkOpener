@@ -14,6 +14,9 @@
 		353F20AF2B9F0C4F0032CE95 /* SimulatorManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353F20AE2B9F0C4F0032CE95 /* SimulatorManagerProtocol.swift */; };
 		353F20B12B9F0C670032CE95 /* SimulatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353F20B02B9F0C670032CE95 /* SimulatorManager.swift */; };
 		353F20B32B9F0D410032CE95 /* DeeplinkOpenerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353F20B22B9F0D410032CE95 /* DeeplinkOpenerProtocol.swift */; };
+		353F20BF2B9F11750032CE95 /* SimulatorInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353F20BE2B9F11750032CE95 /* SimulatorInfoView.swift */; };
+		353F20C22B9F1AFF0032CE95 /* VoidCallBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353F20C12B9F1AFF0032CE95 /* VoidCallBack.swift */; };
+		353F20C42B9F7ED20032CE95 /* SimulatorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353F20C32B9F7ED20032CE95 /* SimulatorListView.swift */; };
 		356C45CC2B9ABB4C00DCA82D /* SBDeeplinkOpenerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C45CB2B9ABB4C00DCA82D /* SBDeeplinkOpenerApp.swift */; };
 		356C45CE2B9ABB4C00DCA82D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C45CD2B9ABB4C00DCA82D /* ContentView.swift */; };
 		356C45D02B9ABB4E00DCA82D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 356C45CF2B9ABB4E00DCA82D /* Assets.xcassets */; };
@@ -56,6 +59,9 @@
 		353F20AE2B9F0C4F0032CE95 /* SimulatorManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorManagerProtocol.swift; sourceTree = "<group>"; };
 		353F20B02B9F0C670032CE95 /* SimulatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorManager.swift; sourceTree = "<group>"; };
 		353F20B22B9F0D410032CE95 /* DeeplinkOpenerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkOpenerProtocol.swift; sourceTree = "<group>"; };
+		353F20BE2B9F11750032CE95 /* SimulatorInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorInfoView.swift; sourceTree = "<group>"; };
+		353F20C12B9F1AFF0032CE95 /* VoidCallBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidCallBack.swift; sourceTree = "<group>"; };
+		353F20C32B9F7ED20032CE95 /* SimulatorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorListView.swift; sourceTree = "<group>"; };
 		356C45C82B9ABB4C00DCA82D /* SBDeeplinkOpener.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SBDeeplinkOpener.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		356C45CB2B9ABB4C00DCA82D /* SBDeeplinkOpenerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBDeeplinkOpenerApp.swift; sourceTree = "<group>"; };
 		356C45CD2B9ABB4C00DCA82D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -167,6 +173,23 @@
 			path = DesignSystem;
 			sourceTree = "<group>";
 		};
+		353F20BB2B9F11460032CE95 /* SimulatorList */ = {
+			isa = PBXGroup;
+			children = (
+				353F20BE2B9F11750032CE95 /* SimulatorInfoView.swift */,
+				353F20C32B9F7ED20032CE95 /* SimulatorListView.swift */,
+			);
+			path = SimulatorList;
+			sourceTree = "<group>";
+		};
+		353F20C02B9F1AF50032CE95 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				353F20C12B9F1AFF0032CE95 /* VoidCallBack.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		356C45BF2B9ABB4C00DCA82D = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +213,7 @@
 		356C45CA2B9ABB4C00DCA82D /* SBDeeplinkOpener */ = {
 			isa = PBXGroup;
 			children = (
+				353F20C02B9F1AF50032CE95 /* Common */,
 				353F20BA2B9F0DBF0032CE95 /* DesignSystem */,
 				353F20B42B9F0D520032CE95 /* Core */,
 				356C45F62B9ABD5300DCA82D /* Feature */,
@@ -230,6 +254,7 @@
 		356C45F62B9ABD5300DCA82D /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				353F20BB2B9F11460032CE95 /* SimulatorList */,
 				353F20B92B9F0DAA0032CE95 /* Feature */,
 				353F20B82B9F0D960032CE95 /* Details */,
 				356C45F72B9ABD5A00DCA82D /* DeeplinkList */,
@@ -383,12 +408,15 @@
 				356C45FB2B9ABE2200DCA82D /* DeeplinkEntity.swift in Sources */,
 				356C46042B9AD0B100DCA82D /* InfoGroupView.swift in Sources */,
 				353F20AF2B9F0C4F0032CE95 /* SimulatorManagerProtocol.swift in Sources */,
+				353F20C42B9F7ED20032CE95 /* SimulatorListView.swift in Sources */,
 				353F20A92B9F0BFC0032CE95 /* SimulatorState.swift in Sources */,
+				353F20BF2B9F11750032CE95 /* SimulatorInfoView.swift in Sources */,
 				356C45FF2B9ACEA800DCA82D /* DeeplinkDetailsView.swift in Sources */,
 				353F20AB2B9F0C1C0032CE95 /* SimulatorDataParserProtocol.swift in Sources */,
 				356C46082B9AD39B00DCA82D /* AppDeeplinkOpener.swift in Sources */,
 				356C45F92B9ABD6F00DCA82D /* DeeplinkListView.swift in Sources */,
 				356C45CE2B9ABB4C00DCA82D /* ContentView.swift in Sources */,
+				353F20C22B9F1AFF0032CE95 /* VoidCallBack.swift in Sources */,
 				353F20B32B9F0D410032CE95 /* DeeplinkOpenerProtocol.swift in Sources */,
 				356C45FD2B9AC6D100DCA82D /* DeeplinkItemView.swift in Sources */,
 				353F20B12B9F0C670032CE95 /* SimulatorManager.swift in Sources */,

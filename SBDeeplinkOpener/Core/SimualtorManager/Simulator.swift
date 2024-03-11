@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents a simulator
-struct Simulator {
+struct Simulator: Equatable {
     
     /// The version of the simulator
     ///
