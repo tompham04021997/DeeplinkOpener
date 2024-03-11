@@ -7,10 +7,23 @@
 
 import Foundation
 
+/// Represents a simulator
 struct Simulator {
+    
+    /// The version of the simulator
+    ///
+    /// Example: "13.3"
     let version: String
+
+    /// The name of the simulator
+    /// 
+    /// Example: "iPhone 11 (UUID) (Shutdown)" 
     let name: String
+
+    /// The UUID of the simulator
     let uuid: String
+
+    /// The state of the simulator
     let state: SimulatorState
 }
 

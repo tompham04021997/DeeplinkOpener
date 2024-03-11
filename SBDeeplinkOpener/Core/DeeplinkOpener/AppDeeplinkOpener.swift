@@ -8,17 +8,25 @@
 import Foundation
 import AppKit
 
-final class AppDeeplinkOpener: DeeplinkOpenerProtocol {
+/// Represents a class for opening a deeplink on a simulator
+final class AppDeeplinkOpener {
     
+    // MARK: - Dependencies
+
     private let simulatorManager = SimulatorManager()
-    
+}
+
+// MARK: - DeeplinkOpenerProtocol
+
+extension AppDeeplinkOpener: DeeplinkOpenerProtocol {
     
     func openDeeplink(_ deeplink: String, on simulator: Simulator) {
         bootSimulatorIfNeeded(simulator)
         openDeeplink(deeplink, withSimulatorUUID: simulator.uuid)
     }
-    
 }
+
+// MARK: - Privates
 
 extension AppDeeplinkOpener {
     

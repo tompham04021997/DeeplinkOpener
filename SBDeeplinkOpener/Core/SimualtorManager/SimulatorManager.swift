@@ -7,14 +7,22 @@
 
 import Foundation
 
+/// Represents a protocol for managing simulators
+
 final class SimulatorManager {
-    
+
+    // MARK: - Dependencies
+
     private let simulatorDataParser: SimulatorDataParserProtocol
     
+    // MARK: - Initializers
+
     init(simulatorDataParser: SimulatorDataParserProtocol = SimulatorDataParser()) {
         self.simulatorDataParser = simulatorDataParser
     }
 }
+
+// MARK: - SimulatorManagerProtocol
 
 extension SimulatorManager: SimulatorManagerProtocol {
     
