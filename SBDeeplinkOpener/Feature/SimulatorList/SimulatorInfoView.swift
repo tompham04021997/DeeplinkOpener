@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SimulatorInfoViewModel {
     
-    private let entity: Simulator
+    let entity: Simulator
     
     init(entity: Simulator) {
         self.entity = entity

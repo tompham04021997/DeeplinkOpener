@@ -10,7 +10,9 @@ import Foundation
 struct DeeplinkEntity {
     
     let id: String
-    let deeplink: String?
+    let name: String
+    let schema: String
+    let path: String
     let params: [String: String]?
 }
 

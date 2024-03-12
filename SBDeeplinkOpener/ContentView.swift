@@ -18,17 +18,29 @@ struct ContentView: View {
         )
     )
     let simulators = SimulatorManager().getAvailableSimulators().map { SimulatorInfoViewModel(entity: $0) }
+    @State var selectedDeeplink: DeeplinkEntity?
     
     @State var isPickerPresented = false
     
     var body: some View {
         NavigationSplitView {
-            DeeplinkListView()
-                .frame(minWidth: 250, minHeight: 450)
-                .animation(.easeInOut, value: "")
-                .navigationTitle("Deeplink")
+            DeeplinkTreeView(
+                onSeletionItem: { type in
+                    switch type {
+                    case .folder(let name, let id):
+                        return
+                    case .deeplink(let data):
+                        selectedDeeplink = data
+                    }
+                }
+            )
+                .frame(minWidth: 250)
+                .navigationTitle("Structure")
         } detail: {
-            DeeplinkDetailsView()
+            DeeplinkDetailsView(
+                deeplinkEntity: $selectedDeeplink,
+                selectedSimulator: selectedSimulator.entity
+            )
                 .navigationTitle("")
         }
         .toolbar {
