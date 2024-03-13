@@ -61,6 +61,8 @@
 		35DE59552BA15C1100000121 /* DeeplinkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59542BA15C1100000121 /* DeeplinkParser.swift */; };
 		35DE59572BA15C2400000121 /* DeeplinkParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59562BA15C2400000121 /* DeeplinkParserError.swift */; };
 		35DE595C2BA162A700000121 /* DeeplinkTreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE595B2BA162A700000121 /* DeeplinkTreeViewModel.swift */; };
+		35DE595E2BA1665C00000121 /* LocalDataStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE595D2BA1665C00000121 /* LocalDataStorageService.swift */; };
+		35DE59612BA17CAD00000121 /* EditableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59602BA17CAD00000121 /* EditableText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +141,8 @@
 		35DE59542BA15C1100000121 /* DeeplinkParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParser.swift; sourceTree = "<group>"; };
 		35DE59562BA15C2400000121 /* DeeplinkParserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParserError.swift; sourceTree = "<group>"; };
 		35DE595B2BA162A700000121 /* DeeplinkTreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkTreeViewModel.swift; sourceTree = "<group>"; };
+		35DE595D2BA1665C00000121 /* LocalDataStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStorageService.swift; sourceTree = "<group>"; };
+		35DE59602BA17CAD00000121 /* EditableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +173,7 @@
 		353F20B42B9F0D520032CE95 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				35DE58FC2B9FFDA000000121 /* Tree */,
 				35DE59512BA15BF900000121 /* Parser */,
 				35DE590C2BA00F5D00000121 /* Combiner */,
 				35DE590B2BA00F5200000121 /* Model */,
@@ -220,6 +225,8 @@
 		353F20BA2B9F0DBF0032CE95 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				35DE595F2BA17CA100000121 /* EditableText */,
+				35DE58FE2B9FFDA000000121 /* TreeUI */,
 				35DE592E2BA0403300000121 /* Tokens */,
 				35DE59212BA03FD300000121 /* Button */,
 				356C46032B9AD0B100DCA82D /* InfoGroupView.swift */,
@@ -322,8 +329,6 @@
 		356C45F72B9ABD5A00DCA82D /* DeeplinkTreeList */ = {
 			isa = PBXGroup;
 			children = (
-				35DE58FC2B9FFDA000000121 /* Tree */,
-				35DE58FE2B9FFDA000000121 /* TreeUI */,
 				356C45F82B9ABD6F00DCA82D /* DeeplinkTreeView.swift */,
 				35DE595B2BA162A700000121 /* DeeplinkTreeViewModel.swift */,
 			);
@@ -421,6 +426,7 @@
 		35DE594A2BA1288C00000121 /* Deeplink */ = {
 			isa = PBXGroup;
 			children = (
+				35DE594F2BA1579B00000121 /* DeeplinkTreeItemType.swift */,
 				356C45FA2B9ABE2200DCA82D /* DeeplinkEntity.swift */,
 				35DE59482BA1287700000121 /* DeeplinkParamEntity.swift */,
 			);
@@ -440,7 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				35DE594D2BA1556C00000121 /* StorageServiceProtocol.swift */,
-				35DE594F2BA1579B00000121 /* DeeplinkTreeItemType.swift */,
+				35DE595D2BA1665C00000121 /* LocalDataStorageService.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -453,6 +459,14 @@
 				35DE59562BA15C2400000121 /* DeeplinkParserError.swift */,
 			);
 			path = Parser;
+			sourceTree = "<group>";
+		};
+		35DE595F2BA17CA100000121 /* EditableText */ = {
+			isa = PBXGroup;
+			children = (
+				35DE59602BA17CAD00000121 /* EditableText.swift */,
+			);
+			path = EditableText;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -615,6 +629,7 @@
 				353F20C22B9F1AFF0032CE95 /* VoidCallBack.swift in Sources */,
 				35DE59012B9FFDA000000121 /* TreeBuilder.swift in Sources */,
 				35DE59082BA0021000000121 /* TreeFolderView.swift in Sources */,
+				35DE595E2BA1665C00000121 /* LocalDataStorageService.swift in Sources */,
 				35DE59472BA0493E00000121 /* DeeplinkParamListView.swift in Sources */,
 				35DE59452BA042A500000121 /* DeeplinkParamInfoView.swift in Sources */,
 				35DE59172BA03BA500000121 /* EmptyStateView.swift in Sources */,
@@ -632,6 +647,7 @@
 				35DE59062BA0004100000121 /* TreeNode+Extension.swift in Sources */,
 				35DE59032B9FFDA000000121 /* Utilities.swift in Sources */,
 				35DE59422BA0414000000121 /* String+Extensions.swift in Sources */,
+				35DE59612BA17CAD00000121 /* EditableText.swift in Sources */,
 				35DE59402BA0414000000121 /* Optional+Extensions.swift in Sources */,
 				353F20AD2B9F0C2E0032CE95 /* SimulatorDataParser.swift in Sources */,
 				35DE59492BA1287700000121 /* DeeplinkParamEntity.swift in Sources */,

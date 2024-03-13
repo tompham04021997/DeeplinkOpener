@@ -28,13 +28,8 @@ struct DeeplinkTreeView: View {
                             onSelection: {
                                 onSeletionItem(node.value)
                             },
-                            onPerformAction: { type in
-                                switch type {
-                                case .createFolder:
-                                    return
-                                case .createDeeplink:
-                                    return
-                                }
+                            onPerformAction: { action in
+                                viewModel.updateNode(node: node, action: action)
                             }
                         )
                     )
@@ -52,7 +47,11 @@ struct DeeplinkTreeView: View {
 protocol DeeplinkTreeItemViewFactoryProtocol {
     
     associatedtype ContentView: View
-    @ViewBuilder func createView(forType type: DeeplinkTreeItemType, onSelection: @escaping VoidCallBack, onPerformAction: @escaping (DeeplinkTreeActionType) -> Void) -> ContentView
+    @ViewBuilder func createView(
+        forType type: DeeplinkTreeItemType,
+        onSelection: @escaping VoidCallBack,
+        onPerformAction: @escaping (DeeplinkTreeActionType) -> Void
+    ) -> ContentView
 }
 
 final class DeeplinkTreeItemViewFactory {
@@ -62,37 +61,64 @@ final class DeeplinkTreeItemViewFactory {
 enum DeeplinkTreeActionType {
     case createFolder
     case createDeeplink
+    case updateNodeValue(newValue: DeeplinkTreeItemType)
 }
 
 extension DeeplinkTreeItemViewFactory: DeeplinkTreeItemViewFactoryProtocol {
     
     @ViewBuilder
-    func createView(forType type: DeeplinkTreeItemType, onSelection: @escaping VoidCallBack, onPerformAction: @escaping (DeeplinkTreeActionType) -> Void) -> some View {
+    func createView(
+        forType type: DeeplinkTreeItemType,
+        onSelection: @escaping VoidCallBack,
+        onPerformAction: @escaping (DeeplinkTreeActionType
+    ) -> Void) -> some View {
         switch type {
-        case .folder(let name, _):
-            TreeFolderView(title: name)
-                .onTapGesture {
-                    onSelection()
+        case .folder(let name, let id):
+            TreeFolderView(
+                title: name,
+                onFolderNameChanged: { newName in
+                    onPerformAction(.updateNodeValue(newValue: .folder(name: newName, id: id)))
                 }
-                .contextMenu(
-                    ContextMenu(
-                        menuItems: {
-                            Menu("Create") {
-                                Button("Folder") {
-                                    onPerformAction(.createFolder)
-                                }
-                                Button("Deeplink") {
-                                    onPerformAction(.createDeeplink)
-                                }
+            )
+            .onTapGesture {
+                onSelection()
+            }
+            .contextMenu(
+                ContextMenu(
+                    menuItems: {
+                        Menu("Create") {
+                            Button("Folder") {
+                                onPerformAction(.createFolder)
+                            }
+                            Button("Deeplink") {
+                                onPerformAction(.createDeeplink)
                             }
                         }
-                    )
+                        
+                        Button("Remove") {
+                            
+                        }
+                    }
                 )
+            )
         case .deeplink(let data):
-            DeeplinkFileView(title: data.name)
-                .onTapGesture {
-                    onSelection()
+            DeeplinkFileView(
+                title: data.name,
+                onFileNameChanged: {
+                    newName in
+                    data.name = newName
+                    onPerformAction(
+                        .updateNodeValue(
+                            newValue: .deeplink(
+                                data: data
+                            )
+                        )
+                    )
                 }
+            )
+            .onTapGesture {
+                onSelection()
+            }
         }
     }
 }

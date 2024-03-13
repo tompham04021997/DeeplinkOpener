@@ -9,7 +9,14 @@ import SwiftUI
 
 struct DeeplinkFileView: View {
     
-    let title: String
+    @State private var title: String
+    
+    var onFileNameChanged: (String) -> Void
+    
+    init(title: String, onFileNameChanged: @escaping (String) -> Void) {
+        self._title = State(wrappedValue: title)
+        self.onFileNameChanged = onFileNameChanged
+    }
     
     var body: some View {
         HStack(spacing: 8) {
@@ -19,15 +26,20 @@ struct DeeplinkFileView: View {
                 .frame(width: 16, height: 16)
                 .clipped()
             
-            Text(title)
+            EditableText(text: $title)
                 .font(.system(size: 12, weight: .regular))
                 .foregroundStyle(Color.white)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
+        .onChange(of: title) { oldValue, newValue in
+            onFileNameChanged(newValue)
+        }
     }
 }
 
 #Preview {
-    DeeplinkFileView(title: "Challenge home")
+    DeeplinkFileView(title: "Challenge home") { _ in
+        
+    }
 }

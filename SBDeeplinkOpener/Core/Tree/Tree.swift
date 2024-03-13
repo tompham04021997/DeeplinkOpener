@@ -575,3 +575,43 @@ extension TreeNode: Decodable where Value: Decodable {
         children = try container.decode([TreeNode<Value>].self, forKey: .children)
     }
 }
+
+extension TreeList where Value: Equatable {
+    public mutating func updateNode(_ newNode: TreeNode<Value>) {
+        if let index = nodes.firstIndex(where: { $0.value == newNode.value }) {
+            nodes[index] = newNode
+        } else {
+            for i in nodes.indices {
+                if nodes[i].updateNode(newNode) {
+                    break
+                }
+            }
+        }
+    }
+    
+    public mutating func addChill(_ child: TreeNode<Value>, toNode node: inout TreeNode<Value>) {
+        node.addChill(child)
+        updateNode(node)
+    }
+}
+
+extension TreeNode where Value: Equatable {
+    @discardableResult
+    mutating func updateNode(_ newNode: TreeNode<Value>) -> Bool {
+        if value == newNode.value {
+            self = newNode
+            return true
+        } else {
+            for i in children.indices {
+                if children[i].updateNode(newNode) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+    mutating func addChill(_ child: TreeNode<Value>) {
+        self.children.append(child)
+    }
+}

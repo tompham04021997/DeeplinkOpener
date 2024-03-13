@@ -15,7 +15,7 @@ final class DeeplinkEntity: Codable {
     var path: String
     var params: [DeeplinkParamEntity]?
     
-    init(id: String, name: String, schema: String, path: String, params: [DeeplinkParamEntity]? = nil) {
+    init(id: String = UUID().uuidString, name: String, schema: String, path: String, params: [DeeplinkParamEntity]? = nil) {
         self.id = id
         self.name = name
         self.schema = schema
