@@ -1,9 +1,6 @@
 //
 //  Utilities.swift
 //  
-//
-//  Created by David Nadoba on 07.12.20.
-//
 
 import Foundation
 

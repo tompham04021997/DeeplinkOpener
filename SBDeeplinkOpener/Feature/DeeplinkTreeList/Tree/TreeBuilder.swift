@@ -1,8 +1,5 @@
 //
 //  TreeBuilder.swift
-//  
-//
-//  Created by David Nadoba on 03.04.21.
 //
 #if swift(>=5.4)
 @resultBuilder

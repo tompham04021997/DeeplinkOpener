@@ -7,109 +7,87 @@
 
 import SwiftUI
 
-enum DeeplinkTreeItemType {
-    case folder(name: String, id: String)
-    case deeplink(data: DeeplinkEntity)
-}
-
-extension DeeplinkTreeItemType: Identifiable {
-    var id: String {
-        switch self {
-        case .folder(_ , let id):
-            return id
-            
-        case .deeplink(let data):
-            return data.id
-        }
-    }
-}
-
-extension DeeplinkTreeItemType: Equatable {
-    static func == (lhs: DeeplinkTreeItemType, rhs: DeeplinkTreeItemType) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
-
-extension DeeplinkTreeItemType: Hashable {
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}
-
 struct DeeplinkTreeView: View {
     
     private let deeplinkTreeItemFactory: any DeeplinkTreeItemViewFactoryProtocol = DeeplinkTreeItemViewFactory()
-    
     var onSeletionItem: (DeeplinkTreeItemType) -> Void
     
-    @State var tree = TreeList<DeeplinkTreeItemType> {
-        TreeNode(DeeplinkTreeItemType.folder(name: "Challenge", id: "1")) {
-            TreeNode(
-                DeeplinkTreeItemType.deeplink(
-                    data: .init(
-                        id: "1",
-                        name: "SBOC Challenge Details",
-                        schema: "shopback",
-                        path: "challenge",
-                        params: [
-                            DeeplinkParamEntity(
-                                key: "code",
-                                value: "T4498609"
-                            )
-                        ]
-                    )
-                )
-            )
-            
-            TreeNode(
-                DeeplinkTreeItemType.deeplink(
-                    data: .init(
-                        id: "2",
-                        name: "Home",
-                        schema: "shopback",
-                        path: "challenge",
-                        params: nil
-                    )
-                )
-            )
-        }
-    }
+    @StateObject var viewModel = DeeplinkTreeViewModel()
     
     var body: some View {
-        List(tree.nodes, id: \.value, children: \.optionalChildren) { node in
-            AnyView(
-                deeplinkTreeItemFactory.createView(
-                    forType: node.value,
-                    onSelection: {
-                        onSeletionItem(node.value)
-                    }
-                )
-            )
+        Group {
+            switch viewModel.dataState {
+            case .loading:
+                Text("Loading")
+                
+            case .loaded(let tree):
+                List(tree.nodes, id: \.value, children: \.optionalChildren) { node in
+                    AnyView(
+                        deeplinkTreeItemFactory.createView(
+                            forType: node.value,
+                            onSelection: {
+                                onSeletionItem(node.value)
+                            },
+                            onPerformAction: { type in
+                                switch type {
+                                case .createFolder:
+                                    return
+                                case .createDeeplink:
+                                    return
+                                }
+                            }
+                        )
+                    )
+                }
+            }
         }
+        .onAppear(perform: {
+            Task {
+                await viewModel.fetch()
+            }
+        })
     }
 }
 
 protocol DeeplinkTreeItemViewFactoryProtocol {
     
     associatedtype ContentView: View
-    @ViewBuilder func createView(forType type: DeeplinkTreeItemType, onSelection: @escaping VoidCallBack) -> ContentView
+    @ViewBuilder func createView(forType type: DeeplinkTreeItemType, onSelection: @escaping VoidCallBack, onPerformAction: @escaping (DeeplinkTreeActionType) -> Void) -> ContentView
 }
 
 final class DeeplinkTreeItemViewFactory {
     
 }
 
+enum DeeplinkTreeActionType {
+    case createFolder
+    case createDeeplink
+}
+
 extension DeeplinkTreeItemViewFactory: DeeplinkTreeItemViewFactoryProtocol {
     
     @ViewBuilder
-    func createView(forType type: DeeplinkTreeItemType, onSelection: @escaping VoidCallBack) -> some View {
+    func createView(forType type: DeeplinkTreeItemType, onSelection: @escaping VoidCallBack, onPerformAction: @escaping (DeeplinkTreeActionType) -> Void) -> some View {
         switch type {
         case .folder(let name, _):
             TreeFolderView(title: name)
                 .onTapGesture {
                     onSelection()
                 }
+                .contextMenu(
+                    ContextMenu(
+                        menuItems: {
+                            Menu("Create") {
+                                Button("Folder") {
+                                    onPerformAction(.createFolder)
+                                }
+                                Button("Deeplink") {
+                                    onPerformAction(.createDeeplink)
+                                }
+                            }
+                        }
+                    )
+                )
         case .deeplink(let data):
             DeeplinkFileView(title: data.name)
                 .onTapGesture {

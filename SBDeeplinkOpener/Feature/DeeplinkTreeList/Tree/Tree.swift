@@ -1,9 +1,5 @@
 //
 //  Tree.swift
-//
-//
-//  Created by David Nadoba on 06.12.20.
-//
 
 public struct TreeIndex {
     public typealias Slice = ArraySlice<Int>
@@ -534,5 +530,48 @@ extension TreeList {
         nodes.mapInPlace {
             $0.removeAllChildren(where: shouldBeRemoved)
         }
+    }
+}
+extension TreeList {
+    enum CodingKeys: String, CodingKey {
+        case nodes
+    }
+}
+
+extension TreeList: Encodable where Value: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(nodes, forKey: .nodes)
+    }
+}
+
+extension TreeList: Decodable where Value: Decodable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        nodes = try container.decode([TreeNode<Value>].self, forKey: .nodes)
+    }
+}
+
+extension TreeNode {
+    
+    enum CodingKeys: String, CodingKey {
+        case value
+        case children
+    }
+}
+
+extension TreeNode: Encodable where Value: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(value, forKey: .value)
+        try container.encode(children, forKey: .children)
+    }
+}
+
+extension TreeNode: Decodable where Value: Decodable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        value = try container.decode(Value.self, forKey: .value)
+        children = try container.decode([TreeNode<Value>].self, forKey: .children)
     }
 }

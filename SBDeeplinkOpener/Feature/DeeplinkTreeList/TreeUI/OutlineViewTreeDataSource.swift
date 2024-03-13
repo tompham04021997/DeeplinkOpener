@@ -1,9 +1,6 @@
 //
 //  OutlineViewTreeDataSource.swift
 //  
-//
-//  Created by David Nadoba on 06.12.20.
-//
 
 #if os(macOS)
 import AppKit

@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DeeplinkEntity {
+final class DeeplinkEntity: Codable {
     
     var id: String
     var name: String
@@ -22,34 +22,26 @@ final class DeeplinkEntity {
         self.path = path
         self.params = params
     }
-}
-
-
-enum DeeplinkParserError: Error {
-    case invalidateDeeplinkURL
-    case invalidateDeeplinkSchema
-}
-
-protocol DeeplinkParserProtocol {
-    func getSchema(fromDeeplink deeplink: String) throws -> String
-}
-
-final class DeeplinkParser {
     
-}
-
-extension DeeplinkParser: DeeplinkParserProtocol {
+    private enum CodingKeys: String, CodingKey {
+        case id, name, schema, path, params
+    }
     
-    func getSchema(fromDeeplink deeplink: String) throws -> String {
-        
-        guard let deeplinkURL = URL(string: deeplink) else {
-            throw DeeplinkParserError.invalidateDeeplinkURL
-        }
-        
-        guard let schema = deeplinkURL.scheme else {
-            throw DeeplinkParserError.invalidateDeeplinkSchema
-        }
-        
-        return schema
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = (try? container.decode(String.self, forKey: .id)) ?? ""
+        name = (try? container.decode(String.self, forKey: .name)) ?? ""
+        schema = (try? container.decode(String.self, forKey: .schema)) ?? ""
+        path = (try? container.decode(String.self, forKey: .path)) ?? ""
+        params = try? container.decodeIfPresent([DeeplinkParamEntity].self, forKey: .params)
+    }
+    
+    func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(schema, forKey: .schema)
+        try container.encode(path, forKey: .path)
+        try container.encodeIfPresent(params, forKey: .params)
     }
 }
