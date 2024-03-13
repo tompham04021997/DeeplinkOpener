@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @Environment(\.deeplinkCombiner) var deeplinkCombiner
+    
     @State var selectedSimulator: SimulatorInfoViewModel = SimulatorInfoViewModel(
         entity: Simulator(
             version: "16.0",
@@ -27,21 +29,24 @@ struct ContentView: View {
             DeeplinkTreeView(
                 onSeletionItem: { type in
                     switch type {
-                    case .folder(let name, let id):
+                    case .folder:
                         return
                     case .deeplink(let data):
                         selectedDeeplink = data
                     }
                 }
             )
-                .frame(minWidth: 250)
-                .navigationTitle("Structure")
+            .frame(minWidth: 250)
+            .navigationTitle("Structure")
         } detail: {
             DeeplinkDetailsView(
-                deeplinkEntity: $selectedDeeplink,
-                selectedSimulator: selectedSimulator.entity
+                viewModel: DeeplinkDetailsViewModel(
+                    deeplinkEntity: selectedDeeplink,
+                    selectedSimulator: selectedSimulator.entity,
+                    deeplinkCombiner: deeplinkCombiner
+                )
             )
-                .navigationTitle("")
+            .navigationTitle("")
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -59,7 +64,7 @@ struct ContentView: View {
                 }
             }
         }
-        .frame(minWidth: 800)
+        .frame(minHeight: 400)
     }
 }
 

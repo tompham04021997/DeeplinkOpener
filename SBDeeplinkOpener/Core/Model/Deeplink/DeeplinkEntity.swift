@@ -7,13 +7,21 @@
 
 import Foundation
 
-struct DeeplinkEntity {
+final class DeeplinkEntity {
     
-    let id: String
-    let name: String
-    let schema: String
-    let path: String
-    let params: [String: String]?
+    var id: String
+    var name: String
+    var schema: String
+    var path: String
+    var params: [DeeplinkParamEntity]?
+    
+    init(id: String, name: String, schema: String, path: String, params: [DeeplinkParamEntity]? = nil) {
+        self.id = id
+        self.name = name
+        self.schema = schema
+        self.path = path
+        self.params = params
+    }
 }
 
 

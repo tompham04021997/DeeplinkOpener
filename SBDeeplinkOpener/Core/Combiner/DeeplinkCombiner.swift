@@ -7,22 +7,29 @@
 
 import Foundation
 
-final class DeeplinkCombiner {
-    
-}
+final class DeeplinkCombiner {}
 
 extension DeeplinkCombiner: DeeplinkCombinerProtocol {
     
     func combineToDeeplink(fromEntity entity: DeeplinkEntity) -> String {
         var modifiedDeeplink = "\(entity.schema)://\(entity.path)"
         if let params = entity.params {
-            var combinedParams: [String] = []
-            params.forEach { key, value in
-                combinedParams += ["\(key)=\(value)"]
-            }
-            
-            modifiedDeeplink += "?\(combinedParams.joined(separator: "&"))"
+            modifiedDeeplink += "?\(combinedToDeeplinkForParams(params))"
         }
         return modifiedDeeplink
+    }
+}
+
+extension DeeplinkCombiner {
+    
+    private func combinedToDeeplinkForParams(_ params: [DeeplinkParamEntity]) -> String {
+        var combinedParams: [String] = []
+        params.filter{ !$0.key.isEmpty }
+            .forEach { paramInfo in
+            combinedParams += ["\(paramInfo.key)=\(paramInfo.value)"]
+        }
+        
+        return combinedParams.joined(separator: "&")
+        
     }
 }

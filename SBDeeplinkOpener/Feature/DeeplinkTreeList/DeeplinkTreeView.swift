@@ -53,7 +53,10 @@ struct DeeplinkTreeView: View {
                         schema: "shopback",
                         path: "challenge",
                         params: [
-                            "code": "T4498609"
+                            DeeplinkParamEntity(
+                                key: "code",
+                                value: "T4498609"
+                            )
                         ]
                     )
                 )

@@ -27,9 +27,7 @@
 		356C45F92B9ABD6F00DCA82D /* DeeplinkTreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C45F82B9ABD6F00DCA82D /* DeeplinkTreeView.swift */; };
 		356C45FB2B9ABE2200DCA82D /* DeeplinkEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C45FA2B9ABE2200DCA82D /* DeeplinkEntity.swift */; };
 		356C45FF2B9ACEA800DCA82D /* DeeplinkDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C45FE2B9ACEA800DCA82D /* DeeplinkDetailsView.swift */; };
-		356C46022B9ACF9F00DCA82D /* FeatureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C46012B9ACF9F00DCA82D /* FeatureListView.swift */; };
 		356C46042B9AD0B100DCA82D /* InfoGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C46032B9AD0B100DCA82D /* InfoGroupView.swift */; };
-		356C46062B9AD1D500DCA82D /* AppPrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C46052B9AD1D500DCA82D /* AppPrimaryButtonStyle.swift */; };
 		356C46082B9AD39B00DCA82D /* AppDeeplinkOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C46072B9AD39B00DCA82D /* AppDeeplinkOpener.swift */; };
 		35DE58FF2B9FFDA000000121 /* OutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE58F72B9FFDA000000121 /* OutlineView.swift */; };
 		35DE59002B9FFDA000000121 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE58F82B9FFDA000000121 /* Tree.swift */; };
@@ -42,6 +40,21 @@
 		35DE590A2BA0036000000121 /* DeeplinkFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59092BA0036000000121 /* DeeplinkFileView.swift */; };
 		35DE590E2BA00F6F00000121 /* DeeplinkCombinerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE590D2BA00F6F00000121 /* DeeplinkCombinerProtocol.swift */; };
 		35DE59102BA00FAA00000121 /* DeeplinkCombiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE590F2BA00FAA00000121 /* DeeplinkCombiner.swift */; };
+		35DE59122BA02B9400000121 /* DeeplinkDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59112BA02B9400000121 /* DeeplinkDetailsViewModel.swift */; };
+		35DE59152BA030C000000121 /* AppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59142BA030C000000121 /* AppDependencyContainer.swift */; };
+		35DE59172BA03BA500000121 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59162BA03BA500000121 /* EmptyStateView.swift */; };
+		35DE59222BA03FD300000121 /* DSButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59182BA03FD300000121 /* DSButtonStyle.swift */; };
+		35DE59242BA03FD300000121 /* DSPrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE591A2BA03FD300000121 /* DSPrimaryButtonStyle.swift */; };
+		35DE592F2BA0403300000121 /* DSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE592A2BA0403300000121 /* DSColor.swift */; };
+		35DE59302BA0403300000121 /* DSFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE592B2BA0403300000121 /* DSFont.swift */; };
+		35DE59312BA0403300000121 /* DSIconSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE592C2BA0403300000121 /* DSIconSize.swift */; };
+		35DE59322BA0403300000121 /* DSSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE592D2BA0403300000121 /* DSSpacing.swift */; };
+		35DE593C2BA0414000000121 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59332BA0414000000121 /* Color+Extensions.swift */; };
+		35DE59402BA0414000000121 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59372BA0414000000121 /* Optional+Extensions.swift */; };
+		35DE59422BA0414000000121 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59392BA0414000000121 /* String+Extensions.swift */; };
+		35DE59452BA042A500000121 /* DeeplinkParamInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59442BA042A500000121 /* DeeplinkParamInfoView.swift */; };
+		35DE59472BA0493E00000121 /* DeeplinkParamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59462BA0493E00000121 /* DeeplinkParamListView.swift */; };
+		35DE59492BA1287700000121 /* DeeplinkParamEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59482BA1287700000121 /* DeeplinkParamEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,9 +99,7 @@
 		356C45F82B9ABD6F00DCA82D /* DeeplinkTreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkTreeView.swift; sourceTree = "<group>"; };
 		356C45FA2B9ABE2200DCA82D /* DeeplinkEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkEntity.swift; sourceTree = "<group>"; };
 		356C45FE2B9ACEA800DCA82D /* DeeplinkDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkDetailsView.swift; sourceTree = "<group>"; };
-		356C46012B9ACF9F00DCA82D /* FeatureListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureListView.swift; sourceTree = "<group>"; };
 		356C46032B9AD0B100DCA82D /* InfoGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGroupView.swift; sourceTree = "<group>"; };
-		356C46052B9AD1D500DCA82D /* AppPrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		356C46072B9AD39B00DCA82D /* AppDeeplinkOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeeplinkOpener.swift; sourceTree = "<group>"; };
 		35DE58F72B9FFDA000000121 /* OutlineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutlineView.swift; sourceTree = "<group>"; };
 		35DE58F82B9FFDA000000121 /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
@@ -101,6 +112,21 @@
 		35DE59092BA0036000000121 /* DeeplinkFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkFileView.swift; sourceTree = "<group>"; };
 		35DE590D2BA00F6F00000121 /* DeeplinkCombinerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkCombinerProtocol.swift; sourceTree = "<group>"; };
 		35DE590F2BA00FAA00000121 /* DeeplinkCombiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkCombiner.swift; sourceTree = "<group>"; };
+		35DE59112BA02B9400000121 /* DeeplinkDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkDetailsViewModel.swift; sourceTree = "<group>"; };
+		35DE59142BA030C000000121 /* AppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyContainer.swift; sourceTree = "<group>"; };
+		35DE59162BA03BA500000121 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		35DE59182BA03FD300000121 /* DSButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSButtonStyle.swift; sourceTree = "<group>"; };
+		35DE591A2BA03FD300000121 /* DSPrimaryButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSPrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		35DE592A2BA0403300000121 /* DSColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSColor.swift; sourceTree = "<group>"; };
+		35DE592B2BA0403300000121 /* DSFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSFont.swift; sourceTree = "<group>"; };
+		35DE592C2BA0403300000121 /* DSIconSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSIconSize.swift; sourceTree = "<group>"; };
+		35DE592D2BA0403300000121 /* DSSpacing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSSpacing.swift; sourceTree = "<group>"; };
+		35DE59332BA0414000000121 /* Color+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		35DE59372BA0414000000121 /* Optional+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
+		35DE59392BA0414000000121 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		35DE59442BA042A500000121 /* DeeplinkParamInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParamInfoView.swift; sourceTree = "<group>"; };
+		35DE59462BA0493E00000121 /* DeeplinkParamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParamListView.swift; sourceTree = "<group>"; };
+		35DE59482BA1287700000121 /* DeeplinkParamEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParamEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,8 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				353F20B72B9F0D860032CE95 /* Parser */,
-				353F20A62B9F0BD70032CE95 /* Simulator.swift */,
-				353F20A82B9F0BFC0032CE95 /* SimulatorState.swift */,
 				353F20B02B9F0C670032CE95 /* SimulatorManager.swift */,
 				353F20AE2B9F0C4F0032CE95 /* SimulatorManagerProtocol.swift */,
 			);
@@ -173,23 +197,20 @@
 			isa = PBXGroup;
 			children = (
 				356C45FE2B9ACEA800DCA82D /* DeeplinkDetailsView.swift */,
+				35DE59112BA02B9400000121 /* DeeplinkDetailsViewModel.swift */,
+				35DE59442BA042A500000121 /* DeeplinkParamInfoView.swift */,
+				35DE59462BA0493E00000121 /* DeeplinkParamListView.swift */,
 			);
 			path = Details;
-			sourceTree = "<group>";
-		};
-		353F20B92B9F0DAA0032CE95 /* Feature */ = {
-			isa = PBXGroup;
-			children = (
-				356C46012B9ACF9F00DCA82D /* FeatureListView.swift */,
-			);
-			path = Feature;
 			sourceTree = "<group>";
 		};
 		353F20BA2B9F0DBF0032CE95 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				35DE592E2BA0403300000121 /* Tokens */,
+				35DE59212BA03FD300000121 /* Button */,
 				356C46032B9AD0B100DCA82D /* InfoGroupView.swift */,
-				356C46052B9AD1D500DCA82D /* AppPrimaryButtonStyle.swift */,
+				35DE59162BA03BA500000121 /* EmptyStateView.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -206,6 +227,7 @@
 		353F20C02B9F1AF50032CE95 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				35DE593B2BA0414000000121 /* Extensions */,
 				353F20C12B9F1AFF0032CE95 /* VoidCallBack.swift */,
 			);
 			path = Common;
@@ -275,22 +297,22 @@
 		356C45F62B9ABD5300DCA82D /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				35DE59132BA030A700000121 /* DI */,
 				353F20BB2B9F11460032CE95 /* SimulatorList */,
-				353F20B92B9F0DAA0032CE95 /* Feature */,
 				353F20B82B9F0D960032CE95 /* Details */,
-				356C45F72B9ABD5A00DCA82D /* DeeplinkList */,
+				356C45F72B9ABD5A00DCA82D /* DeeplinkTreeList */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
 		};
-		356C45F72B9ABD5A00DCA82D /* DeeplinkList */ = {
+		356C45F72B9ABD5A00DCA82D /* DeeplinkTreeList */ = {
 			isa = PBXGroup;
 			children = (
 				35DE58FC2B9FFDA000000121 /* Tree */,
 				35DE58FE2B9FFDA000000121 /* TreeUI */,
 				356C45F82B9ABD6F00DCA82D /* DeeplinkTreeView.swift */,
 			);
-			path = DeeplinkList;
+			path = DeeplinkTreeList;
 			sourceTree = "<group>";
 		};
 		35DE58FC2B9FFDA000000121 /* Tree */ = {
@@ -319,7 +341,8 @@
 		35DE590B2BA00F5200000121 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				356C45FA2B9ABE2200DCA82D /* DeeplinkEntity.swift */,
+				35DE594B2BA1289500000121 /* Simulator */,
+				35DE594A2BA1288C00000121 /* Deeplink */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -331,6 +354,71 @@
 				35DE590F2BA00FAA00000121 /* DeeplinkCombiner.swift */,
 			);
 			path = Combiner;
+			sourceTree = "<group>";
+		};
+		35DE59132BA030A700000121 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				35DE59142BA030C000000121 /* AppDependencyContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		35DE591C2BA03FD300000121 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				35DE59182BA03FD300000121 /* DSButtonStyle.swift */,
+				35DE591A2BA03FD300000121 /* DSPrimaryButtonStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		35DE59212BA03FD300000121 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				35DE591C2BA03FD300000121 /* Styles */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		35DE592E2BA0403300000121 /* Tokens */ = {
+			isa = PBXGroup;
+			children = (
+				35DE592A2BA0403300000121 /* DSColor.swift */,
+				35DE592B2BA0403300000121 /* DSFont.swift */,
+				35DE592C2BA0403300000121 /* DSIconSize.swift */,
+				35DE592D2BA0403300000121 /* DSSpacing.swift */,
+			);
+			name = Tokens;
+			path = SBDeeplinkOpener/DesignSystem/Tokens;
+			sourceTree = SOURCE_ROOT;
+		};
+		35DE593B2BA0414000000121 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				35DE59332BA0414000000121 /* Color+Extensions.swift */,
+				35DE59372BA0414000000121 /* Optional+Extensions.swift */,
+				35DE59392BA0414000000121 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		35DE594A2BA1288C00000121 /* Deeplink */ = {
+			isa = PBXGroup;
+			children = (
+				356C45FA2B9ABE2200DCA82D /* DeeplinkEntity.swift */,
+				35DE59482BA1287700000121 /* DeeplinkParamEntity.swift */,
+			);
+			path = Deeplink;
+			sourceTree = "<group>";
+		};
+		35DE594B2BA1289500000121 /* Simulator */ = {
+			isa = PBXGroup;
+			children = (
+				353F20A62B9F0BD70032CE95 /* Simulator.swift */,
+				353F20A82B9F0BFC0032CE95 /* SimulatorState.swift */,
+			);
+			path = Simulator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -466,8 +554,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				35DE59102BA00FAA00000121 /* DeeplinkCombiner.swift in Sources */,
+				35DE59242BA03FD300000121 /* DSPrimaryButtonStyle.swift in Sources */,
 				353F20A72B9F0BD70032CE95 /* Simulator.swift in Sources */,
-				356C46022B9ACF9F00DCA82D /* FeatureListView.swift in Sources */,
 				35DE59022B9FFDA000000121 /* TreeDifference.swift in Sources */,
 				356C45FB2B9ABE2200DCA82D /* DeeplinkEntity.swift in Sources */,
 				356C46042B9AD0B100DCA82D /* InfoGroupView.swift in Sources */,
@@ -475,7 +563,11 @@
 				353F20C42B9F7ED20032CE95 /* SimulatorListView.swift in Sources */,
 				35DE58FF2B9FFDA000000121 /* OutlineView.swift in Sources */,
 				353F20A92B9F0BFC0032CE95 /* SimulatorState.swift in Sources */,
+				35DE59122BA02B9400000121 /* DeeplinkDetailsViewModel.swift in Sources */,
 				353F20BF2B9F11750032CE95 /* SimulatorInfoView.swift in Sources */,
+				35DE59222BA03FD300000121 /* DSButtonStyle.swift in Sources */,
+				35DE59302BA0403300000121 /* DSFont.swift in Sources */,
+				35DE592F2BA0403300000121 /* DSColor.swift in Sources */,
 				35DE59042B9FFDA000000121 /* OutlineViewTreeDataSource.swift in Sources */,
 				356C45FF2B9ACEA800DCA82D /* DeeplinkDetailsView.swift in Sources */,
 				353F20AB2B9F0C1C0032CE95 /* SimulatorDataParserProtocol.swift in Sources */,
@@ -485,16 +577,25 @@
 				353F20C22B9F1AFF0032CE95 /* VoidCallBack.swift in Sources */,
 				35DE59012B9FFDA000000121 /* TreeBuilder.swift in Sources */,
 				35DE59082BA0021000000121 /* TreeFolderView.swift in Sources */,
+				35DE59472BA0493E00000121 /* DeeplinkParamListView.swift in Sources */,
+				35DE59452BA042A500000121 /* DeeplinkParamInfoView.swift in Sources */,
+				35DE59172BA03BA500000121 /* EmptyStateView.swift in Sources */,
 				353F20B32B9F0D410032CE95 /* DeeplinkOpenerProtocol.swift in Sources */,
 				35DE590A2BA0036000000121 /* DeeplinkFileView.swift in Sources */,
+				35DE59312BA0403300000121 /* DSIconSize.swift in Sources */,
 				35DE59002B9FFDA000000121 /* Tree.swift in Sources */,
 				353F20B12B9F0C670032CE95 /* SimulatorManager.swift in Sources */,
 				35DE590E2BA00F6F00000121 /* DeeplinkCombinerProtocol.swift in Sources */,
-				356C46062B9AD1D500DCA82D /* AppPrimaryButtonStyle.swift in Sources */,
+				35DE59152BA030C000000121 /* AppDependencyContainer.swift in Sources */,
 				356C45CC2B9ABB4C00DCA82D /* SBDeeplinkOpenerApp.swift in Sources */,
+				35DE593C2BA0414000000121 /* Color+Extensions.swift in Sources */,
 				35DE59062BA0004100000121 /* TreeNode+Extension.swift in Sources */,
 				35DE59032B9FFDA000000121 /* Utilities.swift in Sources */,
+				35DE59422BA0414000000121 /* String+Extensions.swift in Sources */,
+				35DE59402BA0414000000121 /* Optional+Extensions.swift in Sources */,
 				353F20AD2B9F0C2E0032CE95 /* SimulatorDataParser.swift in Sources */,
+				35DE59492BA1287700000121 /* DeeplinkParamEntity.swift in Sources */,
+				35DE59322BA0403300000121 /* DSSpacing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
