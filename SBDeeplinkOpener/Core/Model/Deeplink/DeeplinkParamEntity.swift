@@ -7,11 +7,11 @@
 
 import Foundation
 
-class DeeplinkParamEntity: Codable {
+class DeeplinkParamEntity: Codable, ObservableObject {
     
     let id = UUID()
-    var key: String
-    var value: String
+    @Published var key: String
+    @Published var value: String
     
     init(key: String, value: String) {
         self.key = key
@@ -39,5 +39,11 @@ class DeeplinkParamEntity: Codable {
         try container.encode(self.id, forKey: .id)
         try container.encode(self.key, forKey: .key)
         try container.encode(self.value, forKey: .value)
+    }
+}
+
+extension DeeplinkParamEntity: Equatable {
+    static func == (lhs: DeeplinkParamEntity, rhs: DeeplinkParamEntity) -> Bool {
+        return lhs.key == rhs.key && lhs.value == rhs.value && lhs.id == rhs.id
     }
 }

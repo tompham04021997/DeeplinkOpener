@@ -10,19 +10,14 @@ import SwiftUI
 struct InfoGroupView: View {
     
     let title: String
-    @State var value: String
-    var onValueChanged: (String) -> Void
+    @Binding var value: String
     
     init(
         title: String,
-        value: String,
-        onValueChanged: @escaping (String) -> Void
+        value: Binding<String>
     ) {
         self.title = title
-        self._value = State(
-            wrappedValue: value
-        )
-        self.onValueChanged = onValueChanged
+        self._value = value
     }
     
     var body: some View {
@@ -34,12 +29,9 @@ struct InfoGroupView: View {
                 .background(RoundedRectangle(cornerRadius: 8).stroke(Color.white))
         }
         .padding(.vertical, .dimensionSpace2)
-        .onChange(of: value) { oldValue, newValue in
-            onValueChanged(newValue)
-        }
     }
 }
 
 #Preview {
-    InfoGroupView(title: "Deeplink", value: "Deeplink value", onValueChanged: { _ in })
+    InfoGroupView(title: "Deeplink", value: .constant("Value"))
 }

@@ -10,39 +10,22 @@ import SwiftUI
 struct ContentView: View {
     
     @Environment(\.deeplinkCombiner) var deeplinkCombiner
+    @EnvironmentObject var treeManager: TreeDataManager
     
-    @State var selectedSimulator: SimulatorInfoViewModel = SimulatorInfoViewModel(
-        entity: Simulator(
-            version: "16.0",
-            name: "iPhone 12",
-            uuid: "BCDEF12-34567890ABCDEF12",
-            state: .booted
-        )
-    )
-    let simulators = SimulatorManager().getAvailableSimulators().map { SimulatorInfoViewModel(entity: $0) }
-    @State var selectedDeeplink: DeeplinkEntity?
-    
+    @StateObject var viewModel = ContentViewModel()
     @State var isPickerPresented = false
+    
     
     var body: some View {
         NavigationSplitView {
-            DeeplinkTreeView(
-                onSeletionItem: { type in
-                    switch type {
-                    case .folder:
-                        return
-                    case .deeplink(let data):
-                        selectedDeeplink = data
-                    }
-                }
-            )
+            DeeplinkTreeView()
             .frame(minWidth: 250)
             .navigationTitle("Structure")
         } detail: {
             DeeplinkDetailsView(
                 viewModel: DeeplinkDetailsViewModel(
-                    deeplinkEntity: selectedDeeplink,
-                    selectedSimulator: selectedSimulator.entity,
+                    treeManager: treeManager,
+                    selectedSimulator: viewModel.selectedSimulator.entity,
                     deeplinkCombiner: deeplinkCombiner
                 )
             )
@@ -51,12 +34,15 @@ struct ContentView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 
-                SimulatorInfoView(viewModel: selectedSimulator, selectionSimulator: $selectedSimulator, onSelection: {
+                SimulatorInfoView(viewModel: viewModel.selectedSimulator, selectionSimulator: $viewModel.selectedSimulator, onSelection: {
                     isPickerPresented = true
                 })
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .popover(isPresented: $isPickerPresented) {
-                    SimulatorListView(simulators: simulators, selectionSimulator: $selectedSimulator) {
+                    SimulatorListView(
+                        simulators: viewModel.simulatorViewModels,
+                        selectionSimulator: $viewModel.selectedSimulator
+                    ) {
                         isPickerPresented = false
                     }
                     .frame(minWidth: 300, minHeight: 400)

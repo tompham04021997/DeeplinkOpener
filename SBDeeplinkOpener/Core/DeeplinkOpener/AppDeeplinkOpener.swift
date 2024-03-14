@@ -31,13 +31,11 @@ extension AppDeeplinkOpener: DeeplinkOpenerProtocol {
 extension AppDeeplinkOpener {
     
     private func bootSimulatorIfNeeded(_ simulator: Simulator) {
-        if simulator.state == .shutdown {
-            let bootTask = Process()
-             bootTask.launchPath = "/usr/bin/env"
-            bootTask.arguments = ["xcrun", "simctl", "boot", simulator.uuid]
-             bootTask.launch()
-             bootTask.waitUntilExit()
-        }
+        let bootTask = Process()
+        bootTask.launchPath = "/usr/bin/env"
+        bootTask.arguments = ["xcrun", "simctl", "boot", simulator.uuid]
+        bootTask.launch()
+        bootTask.waitUntilExit()
     }
     
     private func openDeeplink(_ deeplink: String, withSimulatorUUID uuid: String) {

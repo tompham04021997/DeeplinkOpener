@@ -45,3 +45,13 @@ final class DeeplinkEntity: Codable {
         try container.encodeIfPresent(params, forKey: .params)
     }
 }
+
+extension DeeplinkEntity: Equatable {
+    static func == (lhs: DeeplinkEntity, rhs: DeeplinkEntity) -> Bool {
+        return lhs.id == rhs.id
+        && lhs.name == rhs.name
+        && lhs.path == rhs.path
+        && lhs.schema == rhs.schema
+        && lhs.params?.filter { !$0.key.isEmpty } == rhs.params?.filter { !$0.key.isEmpty }
+    }
+}

@@ -15,6 +15,7 @@ struct SBDeeplinkOpenerApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.deeplinkCombiner, deeplinkCombiner)
+                .environmentObject(TreeDataManager())
         }
     }
 }

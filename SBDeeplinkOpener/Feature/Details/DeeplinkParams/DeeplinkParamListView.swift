@@ -9,10 +9,7 @@ import SwiftUI
 
 struct DeeplinkParamListView: View {
     
-    let params: [DeeplinkParamEntity]
-    var onDataSourceChanged: ([DeeplinkParamEntity]) -> Void
-    var onRemovingParam: (Int) -> Void
-    var onAddingNewParam: (Int) -> Void
+    @Binding var params: [DeeplinkParamEntity]
     
     @State var isRemovingAlertPresented = false
     @State var removingParamIndex: Int?
@@ -32,23 +29,29 @@ struct DeeplinkParamListView: View {
                             key: param.key,
                             value: param.value,
                             onKeyChanged: { newKey in
-                                params[index].key = newKey
-                                onDataSourceChanged(params)
+                                let updatingParams = params
+                                updatingParams[index].key = newKey
+                                params = updatingParams
                             },
                             onValueChanged: { newValue in
-                                params[index].value = newValue
-                                onDataSourceChanged(params)
+                                let updatingParams = params
+                                updatingParams[index].value = newValue
+                                params = updatingParams
                             },
                             onRemoving: {                              
                                 if param.key.isEmpty {
-                                    onRemovingParam(index)
+                                    if params.count <= 1 {
+                                        params = [.empty()]
+                                    } else {
+                                        params.remove(at: index)
+                                    }
                                 } else {
                                     removingParamIndex = index
                                     isRemovingAlertPresented = true
                                 }
                             },
                             onAdding: {
-                                onAddingNewParam(index)
+                                params.append(.empty())
                             }
                         )
                     }
@@ -58,7 +61,7 @@ struct DeeplinkParamListView: View {
             .alert("Confirm for removing the param", isPresented: $isRemovingAlertPresented) {
                 Button("Confirm") {
                     if let removingParamIndex {
-                        onRemovingParam(removingParamIndex)
+                        params.remove(at: removingParamIndex)
                     }
                 }
                 
@@ -80,13 +83,6 @@ struct DeeplinkParamListView: View {
         DeeplinkParamEntity(key: "1", value: "2")
     ]
     return DeeplinkParamListView(
-        params: params,
-        onDataSourceChanged: {
-            params = $0
-        },
-        onRemovingParam: { index in
-        },
-        onAddingNewParam: { index in
-        }
+        params: $params
     )
 }

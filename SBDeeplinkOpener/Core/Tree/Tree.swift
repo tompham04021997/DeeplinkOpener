@@ -593,6 +593,18 @@ extension TreeList where Value: Equatable {
         node.addChill(child)
         updateNode(node)
     }
+    
+    public mutating func removeNode(_ node: TreeNode<Value>) {
+        if let index = nodes.firstIndex(where: { $0.value == node.value }) {
+            nodes.remove(at: index)
+        } else {
+            for i in nodes.indices {
+                if nodes[i].removeNode(node) {
+                    break
+                }
+            }
+        }
+    }
 }
 
 extension TreeNode where Value: Equatable {
@@ -613,5 +625,19 @@ extension TreeNode where Value: Equatable {
 
     mutating func addChill(_ child: TreeNode<Value>) {
         self.children.append(child)
+    }
+
+    mutating func removeNode(_ node: TreeNode<Value>) -> Bool {
+        if let index = children.firstIndex(where: { $0.value == node.value }) {
+            children.remove(at: index)
+            return true
+        } else {
+            for i in children.indices {
+                if children[i].removeNode(node) {
+                    return true
+                }
+            }
+        }
+        return false
     }
 }

@@ -9,16 +9,17 @@ import SwiftUI
 
 struct DeeplinkDetailsView: View {
     @ObservedObject var viewModel: DeeplinkDetailsViewModel
+    @EnvironmentObject var treeManager: TreeDataManager
     
     var body: some View {
         
         switch viewModel.dataState {
-        case .empty:
+        case .initialized:
             EmptyStateView(
                 title: "You have't select any deeplink for opening",
                 message: "Please select the deeplink for customization and perform"
             )
-        case .loaded, .updated:
+        case .loaded:
             ContentView(viewModel: viewModel)
         }
     }
@@ -33,16 +34,9 @@ struct DeeplinkDetailsView: View {
                     VStack(spacing: .dimensionSpace3) {
                         DeeplinkInfoView()
                         DeeplinkParamListView(
-                            params: viewModel.params,
-                            onDataSourceChanged: viewModel.updateDeeplinkParams,
-                            onRemovingParam: { index in
-                                viewModel.removeDeeplinkParam(at: index)
-                            },
-                            onAddingNewParam: { index in
-                                viewModel.addDeeplinkParam(at: index)
-                            }
+                            params: $viewModel.deeplinkParams
                         )
-                        OpenButton()
+                        ActionButtons()
                         Spacer()
                     }
                     .padding(.all, 64)
@@ -54,39 +48,90 @@ struct DeeplinkDetailsView: View {
         private func DeeplinkInfoView() -> some View {
             VStack(spacing: .dimensionSpace4) {
                 HStack {
-                    Text("Deeplink: ")
+                    Text("Deeplink")
                     Text(viewModel.deeplink)
                     Spacer()
+                    
+                    Button(
+                        action: {
+                        
+                    }, label: {
+                        
+                        HStack {
+                            Image("import")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: DSIconSize.small, height: DSIconSize.small)
+                            
+                            Text("Import")
+                        }
+                        .padding(.all, 4)
+                    })
+                    
                 }
-                InfoGroupView(
-                    title: "Schema",
-                    value: viewModel.schema,
-                    onValueChanged: viewModel.updateDeeplinkSchema
-                )
-                InfoGroupView(
-                    title: "Path",
-                    value: viewModel.path,
-                    onValueChanged: viewModel.updateDeeplinkPath
-                )
+                .padding(.vertical, .dimensionSpace2)
+                InfoGroupView(title: "Schema", value: $viewModel.deeplinkSchema)
+                InfoGroupView(title: "Path", value: $viewModel.deeplinkPath)
             }
         }
 
+        private func ActionButtons() -> some View {
+            HStack(spacing: .dimensionSpace4) {
+                OpenButton()
+                SaveButton()
+            }
+            .padding(.top, .dimensionSpace15)
+        }
+        
         private func OpenButton() -> some View {
-            Button {
+            ActionButton(title: "Open") {
                 deeplinkOpener.openDeeplink(
                     viewModel.deeplink,
                     on: viewModel.selectedSimulator
                 )
+            }
+        }
+        
+        private func SaveButton() -> some View {
+            ActionButton(
+                title: "Save",
+                isDisabled: !viewModel.isSavingButtonEnabled
+            ) {
+                viewModel.onSaveDeeplinkData = true
+            }
+        }
+    }
+}
+
+extension DeeplinkDetailsView {
+    struct ActionButton: View {
+        
+        let title: String
+        let isDisabled: Bool
+        var action: VoidCallBack?
+        
+        init(title: String, isDisabled: Bool = false, action: VoidCallBack? = nil) {
+            self.title = title
+            self.isDisabled = isDisabled
+            self.action = action
+        }
+        
+        var body: some View {
+            Button {
+                action?()
             } label: {
                 HStack {
                     Spacer()
-                    Text("Open")
+                    Text(title)
+                        .font(.bodyM)
+                        .foregroundStyle(.white)
                     Spacer()
                 }
-                .frame(height: .dimensionSpace10)
+                .frame(width: 128, height: .dimensionSpace10)
             }
-            .buttonStyle(DSPrimaryButtonStyle())
-            .padding(.top, .dimensionSpace15)
+            .disabled(isDisabled)
+            .buttonStyle(.borderedProminent)
+            .tint(isDisabled ? .gray : .green)
         }
     }
 }
@@ -94,15 +139,7 @@ struct DeeplinkDetailsView: View {
 #Preview {
     DeeplinkDetailsView(
         viewModel: DeeplinkDetailsViewModel(
-            deeplinkEntity: .init(
-                id: "1",
-                name: "SBOC Challenge Details",
-                schema: "shopback",
-                path: "challenge",
-                params: [
-                    DeeplinkParamEntity(key: "code", value: "X")
-                ]
-            ),
+            treeManager: TreeDataManager(),
             selectedSimulator: Simulator(
                 version: "16.0",
                 name: "iPhone 14 (BCDEF12-34567890ABCDEF12)",
