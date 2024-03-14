@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DeeplinkDetailsView: View {
     @ObservedObject var viewModel: DeeplinkDetailsViewModel
-    @EnvironmentObject var treeManager: TreeDataManager
     
     var body: some View {
         
@@ -26,7 +25,6 @@ struct DeeplinkDetailsView: View {
     
     struct ContentView: View {
         @ObservedObject var viewModel: DeeplinkDetailsViewModel
-        private let deeplinkOpener = AppDeeplinkOpener()
 
         var body: some View {
             GeometryReader { proxy in
@@ -85,10 +83,7 @@ struct DeeplinkDetailsView: View {
         
         private func OpenButton() -> some View {
             ActionButton(title: "Open") {
-                deeplinkOpener.openDeeplink(
-                    viewModel.deeplink,
-                    on: viewModel.selectedSimulator
-                )
+                viewModel.onOpenDeeplink = true
             }
         }
         
@@ -104,6 +99,7 @@ struct DeeplinkDetailsView: View {
 }
 
 extension DeeplinkDetailsView {
+    
     struct ActionButton: View {
         
         let title: String

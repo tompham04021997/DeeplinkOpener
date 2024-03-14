@@ -15,11 +15,10 @@ enum DeeplinkDetailsDataState {
 
 final class DeeplinkDetailsViewModel: ObservableObject {
     
-    @ObservedObject var treeManager: TreeDataManager
-    
     // MARK: - Publishers
     
-    // MARK; - Output
+    // MARK: - Output
+    
     @Published var dataState: DeeplinkDetailsDataState = .initialized
     @Published var deeplinkSchema: String = .empty
     @Published var deeplinkPath: String = .empty
@@ -30,8 +29,10 @@ final class DeeplinkDetailsViewModel: ObservableObject {
     // MARK: - Input
     
     @Published var onSaveDeeplinkData = false
+    @Published var onOpenDeeplink = false
     
     // MARK: - Data
+    
     private var originalDeeplinkEntity: DeeplinkEntity?
     private var deeplinkID: String = .empty
     private var deeplinkName: String = .empty
@@ -39,9 +40,11 @@ final class DeeplinkDetailsViewModel: ObservableObject {
     
     // MARK: - Dependencies
     
+    @ObservedObject private var treeManager: TreeDataManager
     private var cancellables = Set<AnyCancellable>()
     private let deeplinkParser = DeeplinkParser()
     private let deeplinkCombiner: DeeplinkCombinerProtocol
+    private let deeplinkOpener = AppDeeplinkOpener()
     
     init(
         treeManager: TreeDataManager,
@@ -114,6 +117,18 @@ extension DeeplinkDetailsViewModel {
                     await self.treeManager.updateSelectedDeeplinkNode(value: entity)
                 }
             }
+            .store(in: &cancellables)
+        
+        $onOpenDeeplink.zip($deeplink)
+            .receive(on: DispatchQueue.global(qos: .background))
+            .filter { $0.0 }
+            .map { $0.1 }
+            .sink(receiveValue: { [weak self] deeplink in
+                guard let deeplinkOpener = self?.deeplinkOpener,
+                      let device = self?.selectedSimulator
+                else { return }
+                deeplinkOpener.openDeeplink(deeplink, on: device)
+            })
             .store(in: &cancellables)
         
         treeManager.$selectedDeeplinkNode
