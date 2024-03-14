@@ -21,7 +21,7 @@ final class TreeDataManager: ObservableObject {
         Task {
             let data = await databaseService.read()
             if data.isEmpty {
-                treeList = TreeList([TreeNode(.folder(name: "Deeplinks", id: UUID().uuidString))])
+                treeList = .defaultList()
             } else {
                 treeList = data
             }
@@ -47,22 +47,11 @@ final class TreeDataManager: ObservableObject {
         var editableNode = node
         switch action {
         case .createFolder:
-            editableNode.addChill(TreeNode(.folder(name: "Folder", id: UUID().uuidString)))
+            editableNode.addChill(.folderNode())
             treeList.updateNode(editableNode)
 
         case .createDeeplink:
-            editableNode.addChill(
-                TreeNode(
-                    .deeplink(
-                        data: .init(
-                            name: "Deeplink",
-                            schema: "shopback" ,
-                            path: .empty,
-                            params: [.empty()]
-                        )
-                    )
-                )
-            )
+            editableNode.addChill(.deeplinkNode())
             treeList.updateNode(editableNode)
             
         case .updateNodeValue(let newValue):
@@ -72,9 +61,7 @@ final class TreeDataManager: ObservableObject {
         case .removeNode(let node):
             treeList.removeNode(node)
             if treeList.isEmpty {
-                treeList = TreeList([
-                    TreeNode(.folder(name: "Deeplinks", id: UUID().uuidString))
-                ])
+                treeList = .defaultList()
             }
         }
         
@@ -82,30 +69,34 @@ final class TreeDataManager: ObservableObject {
             await databaseService.save(tree: treeList)
         }
     }
+}
+
+extension TreeList where Value == DeeplinkTreeItemType {
     
-    private func createNewNode(for action: TreeDataInteractionActionType) -> TreeNode<DeeplinkTreeItemType>? {
-        switch action {
-        case .createFolder:
-            return TreeNode<DeeplinkTreeItemType>(
-                .folder(
-                    name: "Folder",
-                    id: UUID().uuidString
+    static func defaultList() -> TreeList {
+        return TreeList([
+            .folderNode()
+        ])
+    }
+}
+
+extension TreeNode where Value == DeeplinkTreeItemType {
+    
+    static func deeplinkNode() -> TreeNode {
+        return TreeNode(
+            .deeplink(
+                data: .init(
+                    name: "Deeplink",
+                    schema: "shopback",
+                    path: .empty
                 )
             )
-        case .createDeeplink:
-            return TreeNode<DeeplinkTreeItemType>(
-                DeeplinkTreeItemType.deeplink(
-                    data: .init(
-                        name: "Deeplink",
-                        schema: "shopback" ,
-                        path: .empty,
-                        params: [.empty()]
-                    )
-                )
-            )
-            
-        default:
-            return nil
-        }
+        )
+    }
+    
+    static func folderNode() -> TreeNode {
+        return TreeNode(
+            .folder(name: "Deeplinks", id: UUID().uuidString)
+        )
     }
 }
