@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import Factory
 
 struct ContentView: View {
     
-    @Environment(\.deeplinkCombiner) var deeplinkCombiner
-    @EnvironmentObject var treeManager: TreeDataManager
+    @LazyInjected(\.deeplinkCombiner) var deeplinkCombiner
+    @InjectedObject(\.treeDataManager) var treeDataManager
     
     @StateObject var viewModel = ContentViewModel()
     @State var isPickerPresented = false
@@ -24,9 +25,8 @@ struct ContentView: View {
         } detail: {
             DeeplinkDetailsView(
                 viewModel: DeeplinkDetailsViewModel(
-                    treeManager: treeManager,
                     selectedSimulator: viewModel.selectedSimulator.entity,
-                    deeplinkCombiner: deeplinkCombiner
+                    selectedDeeplink: treeDataManager.selectedDeeplink
                 )
             )
             .navigationTitle("")

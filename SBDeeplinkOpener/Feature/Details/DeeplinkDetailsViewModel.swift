@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import Factory
 
 enum DeeplinkDetailsDataState {
     case initialized
@@ -30,6 +31,7 @@ final class DeeplinkDetailsViewModel: ObservableObject {
     
     @Published var onSaveDeeplinkData = false
     @Published var onOpenDeeplink = false
+    @Published var selectedDeeplink: TreeNode<DeeplinkTreeItemType>?
     
     // MARK: - Data
     
@@ -39,21 +41,18 @@ final class DeeplinkDetailsViewModel: ObservableObject {
     let selectedSimulator: Simulator
     
     // MARK: - Dependencies
-    
-    @ObservedObject private var treeManager: TreeDataManager
     private var cancellables = Set<AnyCancellable>()
-    private let deeplinkParser = DeeplinkParser()
-    private let deeplinkCombiner: DeeplinkCombinerProtocol
-    private let deeplinkOpener = AppDeeplinkOpener()
+    
+    @LazyInjected(\.deeplinkParser) var deeplinkParser
+    @LazyInjected(\.deeplinkCombiner) var deeplinkCombiner
+    @LazyInjected(\.deeplinkOpener) var deeplinkOpener
     
     init(
-        treeManager: TreeDataManager,
         selectedSimulator: Simulator,
-        deeplinkCombiner: DeeplinkCombinerProtocol
+        selectedDeeplink: TreeNode<DeeplinkTreeItemType>? = nil
     ) {
         self.selectedSimulator = selectedSimulator
-        self.deeplinkCombiner = deeplinkCombiner
-        self.treeManager = treeManager
+        self.selectedDeeplink = selectedDeeplink
         
         setupBindingDataFlow()
     }
@@ -114,15 +113,15 @@ extension DeeplinkDetailsViewModel {
             .sink { [weak self] entity in
                 Task { [weak self] in
                     guard let self else { return }
-                    await self.treeManager.updateSelectedDeeplinkNode(value: entity)
+//                    await self.treeDataManager.updateDeeplinkData(entity)
                 }
             }
             .store(in: &cancellables)
         
-        $onOpenDeeplink.zip($deeplink)
+        $onOpenDeeplink
             .receive(on: DispatchQueue.global(qos: .background))
-            .filter { $0.0 }
-            .map { $0.1 }
+            .filter { $0 }
+            .map { _ in self.deeplink }
             .sink(receiveValue: { [weak self] deeplink in
                 guard let deeplinkOpener = self?.deeplinkOpener,
                       let device = self?.selectedSimulator
@@ -131,7 +130,7 @@ extension DeeplinkDetailsViewModel {
             })
             .store(in: &cancellables)
         
-        treeManager.$selectedDeeplinkNode
+        $selectedDeeplink
             .sink { [weak self] node in
                 guard let self else { return }
                 switch node?.value {

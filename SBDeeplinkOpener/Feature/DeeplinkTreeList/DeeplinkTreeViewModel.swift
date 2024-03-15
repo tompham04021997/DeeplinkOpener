@@ -9,8 +9,7 @@ import Foundation
 
 enum DeeplinkTreeDateState {
     case loading
-    case loaded(tree: TreeList<DeeplinkTreeItemType>)
+    case loaded(tree: TreeNode<DeeplinkTreeItemType>)
 }
 
-final class DeeplinkTreeViewModel: ObservableObject {
-}
+final class DeeplinkTreeViewModel: ObservableObject {}

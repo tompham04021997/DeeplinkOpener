@@ -135,14 +135,12 @@ extension DeeplinkDetailsView {
 #Preview {
     DeeplinkDetailsView(
         viewModel: DeeplinkDetailsViewModel(
-            treeManager: TreeDataManager(),
             selectedSimulator: Simulator(
                 version: "16.0",
                 name: "iPhone 14 (BCDEF12-34567890ABCDEF12)",
                 uuid: "BCDEF12-34567890ABCDEF12",
                 state: .shutdown
-            ),
-            deeplinkCombiner: DeeplinkCombiner()
+            )
         )
     )
     .frame(

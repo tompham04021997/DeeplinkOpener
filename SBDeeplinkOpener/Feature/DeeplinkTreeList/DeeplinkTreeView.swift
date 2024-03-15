@@ -6,27 +6,29 @@
 //
 
 import SwiftUI
+import Factory
 
 struct DeeplinkTreeView: View {
     
-    private let deeplinkTreeItemFactory: any DeeplinkTreeItemViewFactoryProtocol = DeeplinkTreeItemViewFactory()
-    
-    @EnvironmentObject var treeManager: TreeDataManager
+    @Injected(\.treeItemViewFactory) var treeItemViewFactory
+    @InjectedObject(\.treeDataManager) var treeManager
     @StateObject var viewModel = DeeplinkTreeViewModel()
     
     var body: some View {
-        List(treeManager.treeList.nodes, id: \.value, children: \.optionalChildren) { node in
+        List(treeManager.treeList.children, id: \.value, children: \.optionalChildren) { node in
             AnyView(
-                deeplinkTreeItemFactory.createView(
+                treeItemViewFactory.createView(
                     for: node,
                     onSelection: {
                         treeManager.selectedNode = node
                         if case .deeplink = node.value {
-                            treeManager.selectedDeeplinkNode = node
+                            treeManager.selectedDeeplink = node
                         }
                     },
                     onPerformAction: { action in
-                        treeManager.performAction(action, on: node)
+                        Task {
+                            await treeManager.performAction(action, on: node)
+                        }
                     }
                 )
             )

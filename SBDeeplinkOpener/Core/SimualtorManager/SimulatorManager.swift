@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Factory
 
 /// Represents a protocol for managing simulators
 
@@ -13,13 +14,11 @@ final class SimulatorManager {
 
     // MARK: - Dependencies
 
-    private let simulatorDataParser: SimulatorDataParserProtocol
+    @LazyInjected(\.simulatorDataParser) var simulatorDataParser
     
     // MARK: - Initializers
 
-    init(simulatorDataParser: SimulatorDataParserProtocol = SimulatorDataParser()) {
-        self.simulatorDataParser = simulatorDataParser
-    }
+    init() {}
 }
 
 // MARK: - SimulatorManagerProtocol

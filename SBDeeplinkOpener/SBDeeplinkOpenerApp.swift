@@ -14,8 +14,6 @@ struct SBDeeplinkOpenerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.deeplinkCombiner, deeplinkCombiner)
-                .environmentObject(TreeDataManager())
         }
     }
 }

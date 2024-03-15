@@ -6,97 +6,67 @@
 //
 
 import SwiftUI
+import Factory
 
-@MainActor
 final class TreeDataManager: ObservableObject {
 
-    @Published var treeList: TreeList<DeeplinkTreeItemType> = TreeList()
-    @Published var selectedDeeplinkNode: TreeNode<DeeplinkTreeItemType>?
-    @Published var selectedNode: TreeNode<DeeplinkTreeItemType>?
-    @Published var preparingNode: TreeNode<DeeplinkTreeItemType>?
+    // MARK: - Publishers
     
-    private let databaseService: DeeplinkDataStorageServiceProtocol = LocalDataStorageService()
+    @Published var treeList: TreeNode<DeeplinkTreeItemType> = .root()
+    @Published var selectedDeeplink: TreeNode<DeeplinkTreeItemType>?
+    @Published var selectedNode: TreeNode<DeeplinkTreeItemType>?
+    
+    // MARK: - Dependencies
+    
+    @LazyInjected(\.dataStorageService) var dataStorageService
+    
+    // MARK: - Initializers
     
     init() {
         Task {
-            let data = await databaseService.read()
-            if data.isEmpty {
-                treeList = .defaultList()
-            } else {
+            let data = await dataStorageService.read()
+            await MainActor.run {
                 treeList = data
             }
         }
     }
     
-    func addChild(child: TreeNode<DeeplinkTreeItemType>, toNode node: TreeNode<DeeplinkTreeItemType>) async {
-        var editableNode = node
-        treeList.addChill(child, toNode: &editableNode)
-        _ = await databaseService.save(tree: treeList)
+    func updateDeeplinkData(_ value: DeeplinkEntity) async {
+        guard let nodeID = selectedDeeplink?.nodeID else { return }
+        let temperatureTreeList = treeList
+        temperatureTreeList.updateValue(.deeplink(data: value), forNodeID: nodeID)
+        await MainActor.run {
+            treeList = temperatureTreeList
+        }
+        _ = await dataStorageService.save(tree: treeList)
     }
     
-    func updateSelectedDeeplinkNode(value: DeeplinkEntity) async {
-        guard var editableNode = selectedDeeplinkNode else { return }
-        editableNode.value = .deeplink(data: value)
-        selectedDeeplinkNode = editableNode
-        treeList.updateNode(editableNode)
-        _ = await databaseService.save(tree: treeList)
-    }
-    
-    func performAction(_ action: TreeDataInteractionActionType, on node: TreeNode<DeeplinkTreeItemType>) {
+    func performAction(_ action: TreeDataInteractionActionType, on node: TreeNode<DeeplinkTreeItemType>) async {
         
-        var editableNode = node
+        let temperatureTreeList = treeList
         switch action {
         case .createFolder:
-            editableNode.addChill(.folderNode())
-            treeList.updateNode(editableNode)
+            temperatureTreeList.add(child: .folder(), toNodeWithID: node.nodeID)
 
         case .createDeeplink:
-            editableNode.addChill(.deeplinkNode())
-            treeList.updateNode(editableNode)
+            temperatureTreeList.add(child: .deeplinkFile(), toNodeWithID: node.nodeID)
             
         case .updateNodeValue(let newValue):
-            editableNode.value = newValue
-            treeList.updateNode(editableNode)
+            node.value = newValue
+            temperatureTreeList.replace(child: node)
             
         case .removeNode(let node):
-            treeList.removeNode(node)
-            if treeList.isEmpty {
-                treeList = .defaultList()
+            if treeList.hasFamily {
+                temperatureTreeList.remove(child: node)
             }
         }
         
-        Task {
-            await databaseService.save(tree: treeList)
+        await MainActor.run {
+            treeList = temperatureTreeList
         }
-    }
-}
-
-extension TreeList where Value == DeeplinkTreeItemType {
-    
-    static func defaultList() -> TreeList {
-        return TreeList([
-            .folderNode()
-        ])
-    }
-}
-
-extension TreeNode where Value == DeeplinkTreeItemType {
-    
-    static func deeplinkNode() -> TreeNode {
-        return TreeNode(
-            .deeplink(
-                data: .init(
-                    name: "Deeplink",
-                    schema: "shopback",
-                    path: .empty
-                )
-            )
-        )
-    }
-    
-    static func folderNode() -> TreeNode {
-        return TreeNode(
-            .folder(name: "Deeplinks", id: UUID().uuidString)
-        )
+        
+        Task {
+            await dataStorageService.save(tree: temperatureTreeList)
+        }
     }
 }

@@ -14,32 +14,22 @@ final class LocalDataStorageService {
 
 extension LocalDataStorageService: DeeplinkDataStorageServiceProtocol {
     
-    func read() async -> TreeList<DeeplinkTreeItemType> {
+    func read() async -> TreeNode<DeeplinkTreeItemType> {
         let filePath = getDocumentsDirectory().appendingPathComponent("tree.json")
         do {
             let jsonData = try Data(contentsOf: filePath)
-            let tree = try decoder.decode(TreeList<DeeplinkTreeItemType>.self, from: jsonData)
+            let tree = try decoder.decode(TreeNode<DeeplinkTreeItemType>.self, from: jsonData)
             return tree
         } catch {
             print("Failed to read tree: \(error)")
-            let root = TreeList<DeeplinkTreeItemType>(
-                [
-                    TreeNode(
-                        DeeplinkTreeItemType.folder(
-                            name: "Deeplinks",
-                            id: UUID().uuidString
-                        ),
-                        children: []
-                    )
-                ]
-            )
+            let root = TreeNode<DeeplinkTreeItemType>.root()
             _ = await save(tree: root)
             return root
         }
     }
     
     
-    func save(tree: TreeList<DeeplinkTreeItemType>) async -> Bool {
+    func save(tree: TreeNode<DeeplinkTreeItemType>) async -> Bool {
         do {
             let jsonData = try encoder.encode(tree)
             let filePath = getDocumentsDirectory().appendingPathComponent("tree.json")

@@ -12,7 +12,7 @@ enum DeeplinkTreeItemType {
     case deeplink(data: DeeplinkEntity)
 }
 
-extension DeeplinkTreeItemType: Identifiable {
+extension DeeplinkTreeItemType: TreeNodeIdentifiable {
     var id: String {
         switch self {
         case .folder(_ , let id):

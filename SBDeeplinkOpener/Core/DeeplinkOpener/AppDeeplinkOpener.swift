@@ -7,13 +7,14 @@
 
 import Foundation
 import AppKit
+import Factory
 
 /// Represents a class for opening a deeplink on a simulator
 final class AppDeeplinkOpener {
     
     // MARK: - Dependencies
 
-    private let simulatorManager = SimulatorManager()
+    @LazyInjected(\.simulatorManager) var simulatorManager
 }
 
 // MARK: - DeeplinkOpenerProtocol
