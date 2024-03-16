@@ -7,13 +7,18 @@
 
 import Foundation
 
-extension TreeNode where Value == DeeplinkTreeItemType {
+extension TreeNode where Value == DirectoryType {
     
-    static func root() -> TreeNode<DeeplinkTreeItemType> {
+    /// Create a default tree for the app.
+    /// 
+    /// - Returns: A tree with the root node and a folder node.
+    static func root() -> TreeNode<DirectoryType> {
+        
+        let rootID = UUID().uuidString
         return .init(
             value: .folder(
                 name: "Root",
-                id: UUID().uuidString
+                id: rootID
             ),
             children: [
                 .init(
@@ -22,11 +27,15 @@ extension TreeNode where Value == DeeplinkTreeItemType {
                         id: UUID().uuidString
                     )
                 )
-            ]
+            ],
+            parentID: rootID
         )
     }
     
-    static func folder() -> TreeNode<DeeplinkTreeItemType> {
+    /// Create a default folder with name `Folder` node.
+    /// 
+    /// - Returns: A folder node.
+    static func folder() -> TreeNode<DirectoryType> {
         return .init(
             value: .folder(
                 name: "Folder",
@@ -35,7 +44,10 @@ extension TreeNode where Value == DeeplinkTreeItemType {
         )
     }
     
-    static func deeplinkFile() -> TreeNode<DeeplinkTreeItemType> {
+    /// Create a default deeplink with schema is `Shopback` node.
+    /// 
+    /// - Returns: A deeplink node.
+    static func deeplinkFile() -> TreeNode<DirectoryType> {
         return .init(
             value: .deeplink(
                 data: .init(

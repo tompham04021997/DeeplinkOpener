@@ -11,7 +11,7 @@ protocol DeeplinkTreeItemViewFactoryProtocol {
     
     associatedtype ContentView: View
     @ViewBuilder func createView(
-        for node: TreeNode<DeeplinkTreeItemType>,
+        for node: TreeNode<DirectoryType>,
         onSelection: @escaping VoidCallBack,
         onPerformAction: @escaping (TreeDataInteractionActionType) -> Void
     ) -> ContentView

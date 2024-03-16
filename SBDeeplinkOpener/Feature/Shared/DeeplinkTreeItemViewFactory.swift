@@ -13,7 +13,7 @@ extension DeeplinkTreeItemViewFactory: DeeplinkTreeItemViewFactoryProtocol {
     
     @ViewBuilder
     func createView(
-        for node: TreeNode<DeeplinkTreeItemType>,
+        for node: TreeNode<DirectoryType>,
         onSelection: @escaping VoidCallBack,
         onPerformAction: @escaping (TreeDataInteractionActionType) -> Void
     ) -> some View {

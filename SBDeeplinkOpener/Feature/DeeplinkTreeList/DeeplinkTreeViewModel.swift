@@ -7,9 +7,4 @@
 
 import Foundation
 
-enum DeeplinkTreeDateState {
-    case loading
-    case loaded(tree: TreeNode<DeeplinkTreeItemType>)
-}
-
 final class DeeplinkTreeViewModel: ObservableObject {}

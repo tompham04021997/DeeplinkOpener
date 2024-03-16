@@ -12,9 +12,9 @@ final class TreeDataManager: ObservableObject {
 
     // MARK: - Publishers
     
-    @Published var treeList: TreeNode<DeeplinkTreeItemType> = .root()
-    @Published var selectedDeeplink: TreeNode<DeeplinkTreeItemType>?
-    @Published var selectedNode: TreeNode<DeeplinkTreeItemType>?
+    @Published var treeList: TreeNode<DirectoryType> = .root()
+    @Published var selectedDeeplink: TreeNode<DirectoryType>?
+    @Published var selectedNode: TreeNode<DirectoryType>?
     
     // MARK: - Dependencies
     
@@ -41,7 +41,7 @@ final class TreeDataManager: ObservableObject {
         _ = await dataStorageService.save(tree: treeList)
     }
     
-    func performAction(_ action: TreeDataInteractionActionType, on node: TreeNode<DeeplinkTreeItemType>) async {
+    func performAction(_ action: TreeDataInteractionActionType, on node: TreeNode<DirectoryType>) async {
         
         let temperatureTreeList = treeList
         switch action {

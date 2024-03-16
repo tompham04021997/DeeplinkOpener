@@ -9,7 +9,7 @@ import Foundation
 
 protocol DeeplinkDataStorageServiceProtocol {
     
-    func save(tree: TreeNode<DeeplinkTreeItemType>) async -> Bool
+    func save(tree: TreeNode<DirectoryType>) async -> Bool
     
-    func read() async -> TreeNode<DeeplinkTreeItemType>
+    func read() async -> TreeNode<DirectoryType>
 }

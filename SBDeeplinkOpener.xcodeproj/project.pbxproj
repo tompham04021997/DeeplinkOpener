@@ -57,7 +57,7 @@
 		35DE59472BA0493E00000121 /* DeeplinkParamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59462BA0493E00000121 /* DeeplinkParamListView.swift */; };
 		35DE59492BA1287700000121 /* DeeplinkParamEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59482BA1287700000121 /* DeeplinkParamEntity.swift */; };
 		35DE594E2BA1556C00000121 /* StorageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE594D2BA1556C00000121 /* StorageServiceProtocol.swift */; };
-		35DE59502BA1579B00000121 /* DeeplinkTreeItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE594F2BA1579B00000121 /* DeeplinkTreeItemType.swift */; };
+		35DE59502BA1579B00000121 /* DirectoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE594F2BA1579B00000121 /* DirectoryType.swift */; };
 		35DE59532BA15C0300000121 /* DeeplinkParserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59522BA15C0300000121 /* DeeplinkParserProtocol.swift */; };
 		35DE59552BA15C1100000121 /* DeeplinkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59542BA15C1100000121 /* DeeplinkParser.swift */; };
 		35DE59572BA15C2400000121 /* DeeplinkParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59562BA15C2400000121 /* DeeplinkParserError.swift */; };
@@ -137,7 +137,7 @@
 		35DE59462BA0493E00000121 /* DeeplinkParamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParamListView.swift; sourceTree = "<group>"; };
 		35DE59482BA1287700000121 /* DeeplinkParamEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParamEntity.swift; sourceTree = "<group>"; };
 		35DE594D2BA1556C00000121 /* StorageServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceProtocol.swift; sourceTree = "<group>"; };
-		35DE594F2BA1579B00000121 /* DeeplinkTreeItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkTreeItemType.swift; sourceTree = "<group>"; };
+		35DE594F2BA1579B00000121 /* DirectoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryType.swift; sourceTree = "<group>"; };
 		35DE59522BA15C0300000121 /* DeeplinkParserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParserProtocol.swift; sourceTree = "<group>"; };
 		35DE59542BA15C1100000121 /* DeeplinkParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParser.swift; sourceTree = "<group>"; };
 		35DE59562BA15C2400000121 /* DeeplinkParserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParserError.swift; sourceTree = "<group>"; };
@@ -436,7 +436,7 @@
 		35DE594A2BA1288C00000121 /* Deeplink */ = {
 			isa = PBXGroup;
 			children = (
-				35DE594F2BA1579B00000121 /* DeeplinkTreeItemType.swift */,
+				35DE594F2BA1579B00000121 /* DirectoryType.swift */,
 				356C45FA2B9ABE2200DCA82D /* DeeplinkEntity.swift */,
 				35DE59482BA1287700000121 /* DeeplinkParamEntity.swift */,
 			);
@@ -647,7 +647,7 @@
 				356C45F92B9ABD6F00DCA82D /* DeeplinkTreeView.swift in Sources */,
 				356C45CE2B9ABB4C00DCA82D /* ContentView.swift in Sources */,
 				35DE595C2BA162A700000121 /* DeeplinkTreeViewModel.swift in Sources */,
-				35DE59502BA1579B00000121 /* DeeplinkTreeItemType.swift in Sources */,
+				35DE59502BA1579B00000121 /* DirectoryType.swift in Sources */,
 				35442B9F2BA2CCB100D1E6F8 /* DeeplinkTreeItemViewFactory.swift in Sources */,
 				353F20C22B9F1AFF0032CE95 /* VoidCallBack.swift in Sources */,
 				35DE595E2BA1665C00000121 /* LocalDataStorageService.swift in Sources */,

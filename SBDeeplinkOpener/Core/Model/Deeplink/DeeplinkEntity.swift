@@ -9,6 +9,8 @@ import Foundation
 
 final class DeeplinkEntity: Codable {
     
+    // MARK: - Properties
+
     var id: String
     var name: String
     var schema: String
@@ -44,14 +46,27 @@ final class DeeplinkEntity: Codable {
         try container.encode(path, forKey: .path)
         try container.encodeIfPresent(params, forKey: .params)
     }
+    
+    func cloned() -> DeeplinkEntity {
+        return DeeplinkEntity(
+            id: id,
+            name: name,
+            schema: schema,
+            path: path
+        )
+    }
 }
 
 extension DeeplinkEntity: Equatable {
     static func == (lhs: DeeplinkEntity, rhs: DeeplinkEntity) -> Bool {
+        
+        let lhsFilteredParams = (lhs.params?.filter { !$0.key.isEmpty }).or([])
+        let rhsfilteredParams = (rhs.params?.filter { !$0.key.isEmpty }).or([])
+        
         return lhs.id == rhs.id
         && lhs.name == rhs.name
         && lhs.path == rhs.path
         && lhs.schema == rhs.schema
-        && lhs.params?.filter { !$0.key.isEmpty } == rhs.params?.filter { !$0.key.isEmpty }
+        && lhsFilteredParams == rhsfilteredParams
     }
 }

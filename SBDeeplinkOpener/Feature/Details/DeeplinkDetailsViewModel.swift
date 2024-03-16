@@ -31,7 +31,7 @@ final class DeeplinkDetailsViewModel: ObservableObject {
     
     @Published var onSaveDeeplinkData = false
     @Published var onOpenDeeplink = false
-    @Published var selectedDeeplink: TreeNode<DeeplinkTreeItemType>?
+    @Published var selectedDeeplink: TreeNode<DirectoryType>?
     
     // MARK: - Data
     
@@ -46,10 +46,11 @@ final class DeeplinkDetailsViewModel: ObservableObject {
     @LazyInjected(\.deeplinkParser) var deeplinkParser
     @LazyInjected(\.deeplinkCombiner) var deeplinkCombiner
     @LazyInjected(\.deeplinkOpener) var deeplinkOpener
+    @LazyInjected(\.treeDataManager) var treeDataManager
     
     init(
         selectedSimulator: Simulator,
-        selectedDeeplink: TreeNode<DeeplinkTreeItemType>? = nil
+        selectedDeeplink: TreeNode<DirectoryType>? = nil
     ) {
         self.selectedSimulator = selectedSimulator
         self.selectedDeeplink = selectedDeeplink
@@ -113,7 +114,7 @@ extension DeeplinkDetailsViewModel {
             .sink { [weak self] entity in
                 Task { [weak self] in
                     guard let self else { return }
-//                    await self.treeDataManager.updateDeeplinkData(entity)
+                    await self.treeDataManager.updateDeeplinkData(entity)
                 }
             }
             .store(in: &cancellables)
@@ -146,7 +147,7 @@ extension DeeplinkDetailsViewModel {
     }
     
     private func initializeDataIfPossible(withEntity entity: DeeplinkEntity?) {
-        originalDeeplinkEntity = entity
+        originalDeeplinkEntity = entity?.cloned()
         if let entity {
             deeplinkID = entity.id
             deeplinkName = entity.name

@@ -10,6 +10,6 @@ import Foundation
 enum TreeDataInteractionActionType {
     case createFolder
     case createDeeplink
-    case updateNodeValue(newValue: DeeplinkTreeItemType)
-    case removeNode(node: TreeNode<DeeplinkTreeItemType>)
+    case updateNodeValue(newValue: DirectoryType)
+    case removeNode(node: TreeNode<DirectoryType>)
 }

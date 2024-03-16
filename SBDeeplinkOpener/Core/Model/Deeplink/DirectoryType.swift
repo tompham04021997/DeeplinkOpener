@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum DeeplinkTreeItemType {
+enum DirectoryType {
     case folder(name: String, id: String)
     case deeplink(data: DeeplinkEntity)
 }
 
-extension DeeplinkTreeItemType: TreeNodeIdentifiable {
+extension DirectoryType: TreeNodeIdentifiable {
     var id: String {
         switch self {
         case .folder(_ , let id):
@@ -24,13 +24,13 @@ extension DeeplinkTreeItemType: TreeNodeIdentifiable {
     }
 }
 
-extension DeeplinkTreeItemType: Equatable {
-    static func == (lhs: DeeplinkTreeItemType, rhs: DeeplinkTreeItemType) -> Bool {
+extension DirectoryType: Equatable {
+    static func == (lhs: DirectoryType, rhs: DirectoryType) -> Bool {
         return lhs.id == rhs.id
     }
 }
 
-extension DeeplinkTreeItemType: Hashable {
+extension DirectoryType: Hashable {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
@@ -38,7 +38,7 @@ extension DeeplinkTreeItemType: Hashable {
 }
 
 
-extension DeeplinkTreeItemType: Codable {
+extension DirectoryType: Codable {
 
     enum CodingKeys: String, CodingKey {
         case type
