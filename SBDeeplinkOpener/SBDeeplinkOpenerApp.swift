@@ -10,7 +10,6 @@ import SwiftUI
 @main
 struct SBDeeplinkOpenerApp: App {
     
-    private let deeplinkCombiner = DeeplinkCombiner()
     var body: some Scene {
         WindowGroup {
             ContentView()
