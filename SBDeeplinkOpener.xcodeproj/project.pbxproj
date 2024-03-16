@@ -30,6 +30,10 @@
 		35442BAE2BA4C53D00D1E6F8 /* TreeNode+DeeplinkItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35442BAD2BA4C53D00D1E6F8 /* TreeNode+DeeplinkItemType.swift */; };
 		35442BB02BA4C70B00D1E6F8 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35442BAF2BA4C70B00D1E6F8 /* AppContainer.swift */; };
 		35442BB32BA4C78200D1E6F8 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 35442BB22BA4C78200D1E6F8 /* Factory */; };
+		35442BB82BA5E1F100D1E6F8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 35442BB62BA5E1F100D1E6F8 /* Localizable.strings */; };
+		35442BBB2BA5E34600D1E6F8 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35442BB92BA5E34600D1E6F8 /* XCAssets+Generated.swift */; };
+		35442BBC2BA5E34600D1E6F8 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35442BBA2BA5E34600D1E6F8 /* Strings+Generated.swift */; };
+		35442BBE2BA5F1D800D1E6F8 /* DeeplinkImportableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35442BBD2BA5F1D800D1E6F8 /* DeeplinkImportableView.swift */; };
 		356C45CC2B9ABB4C00DCA82D /* SBDeeplinkOpenerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C45CB2B9ABB4C00DCA82D /* SBDeeplinkOpenerApp.swift */; };
 		356C45CE2B9ABB4C00DCA82D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C45CD2B9ABB4C00DCA82D /* ContentView.swift */; };
 		356C45D02B9ABB4E00DCA82D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 356C45CF2B9ABB4E00DCA82D /* Assets.xcassets */; };
@@ -106,6 +110,10 @@
 		35442BAB2BA4B3A300D1E6F8 /* ValueRequiredTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueRequiredTypes.swift; sourceTree = "<group>"; };
 		35442BAD2BA4C53D00D1E6F8 /* TreeNode+DeeplinkItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TreeNode+DeeplinkItemType.swift"; sourceTree = "<group>"; };
 		35442BAF2BA4C70B00D1E6F8 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		35442BB72BA5E1F100D1E6F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		35442BB92BA5E34600D1E6F8 /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
+		35442BBA2BA5E34600D1E6F8 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
+		35442BBD2BA5F1D800D1E6F8 /* DeeplinkImportableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkImportableView.swift; sourceTree = "<group>"; };
 		356C45C82B9ABB4C00DCA82D /* SBDeeplinkOpener.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SBDeeplinkOpener.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		356C45CB2B9ABB4C00DCA82D /* SBDeeplinkOpenerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBDeeplinkOpenerApp.swift; sourceTree = "<group>"; };
 		356C45CD2B9ABB4C00DCA82D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -219,6 +227,7 @@
 				35442B932BA1F20C00D1E6F8 /* DeeplinkParams */,
 				356C45FE2B9ACEA800DCA82D /* DeeplinkDetailsView.swift */,
 				35DE59112BA02B9400000121 /* DeeplinkDetailsViewModel.swift */,
+				35442BBD2BA5F1D800D1E6F8 /* DeeplinkImportableView.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -302,6 +311,25 @@
 			path = TreeUI;
 			sourceTree = "<group>";
 		};
+		35442BB42BA5E0FA00D1E6F8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				35442BB52BA5E15900D1E6F8 /* Generated */,
+				356C45CF2B9ABB4E00DCA82D /* Assets.xcassets */,
+				35442BB62BA5E1F100D1E6F8 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		35442BB52BA5E15900D1E6F8 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				35442BBA2BA5E34600D1E6F8 /* Strings+Generated.swift */,
+				35442BB92BA5E34600D1E6F8 /* XCAssets+Generated.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		356C45BF2B9ABB4C00DCA82D = {
 			isa = PBXGroup;
 			children = (
@@ -325,13 +353,13 @@
 		356C45CA2B9ABB4C00DCA82D /* SBDeeplinkOpener */ = {
 			isa = PBXGroup;
 			children = (
+				35442BB42BA5E0FA00D1E6F8 /* Resources */,
 				35DE59622BA184E500000121 /* Service */,
 				353F20C02B9F1AF50032CE95 /* Common */,
 				353F20BA2B9F0DBF0032CE95 /* DesignSystem */,
 				353F20B42B9F0D520032CE95 /* Core */,
 				356C45F62B9ABD5300DCA82D /* Feature */,
 				356C45CB2B9ABB4C00DCA82D /* SBDeeplinkOpenerApp.swift */,
-				356C45CF2B9ABB4E00DCA82D /* Assets.xcassets */,
 				356C45D42B9ABB4E00DCA82D /* SBDeeplinkOpener.entitlements */,
 				356C45D12B9ABB4E00DCA82D /* Preview Content */,
 			);
@@ -598,6 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				356C45D32B9ABB4E00DCA82D /* Preview Assets.xcassets in Resources */,
+				35442BB82BA5E1F100D1E6F8 /* Localizable.strings in Resources */,
 				356C45D02B9ABB4E00DCA82D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,6 +672,7 @@
 				35DE592F2BA0403300000121 /* DSColor.swift in Sources */,
 				356C45FF2B9ACEA800DCA82D /* DeeplinkDetailsView.swift in Sources */,
 				353F20AB2B9F0C1C0032CE95 /* SimulatorDataParserProtocol.swift in Sources */,
+				35442BBC2BA5E34600D1E6F8 /* Strings+Generated.swift in Sources */,
 				356C46082B9AD39B00DCA82D /* AppDeeplinkOpener.swift in Sources */,
 				356C45F92B9ABD6F00DCA82D /* DeeplinkTreeView.swift in Sources */,
 				356C45CE2B9ABB4C00DCA82D /* ContentView.swift in Sources */,
@@ -662,8 +692,10 @@
 				35DE594E2BA1556C00000121 /* StorageServiceProtocol.swift in Sources */,
 				353F20B12B9F0C670032CE95 /* SimulatorManager.swift in Sources */,
 				35DE590E2BA00F6F00000121 /* DeeplinkCombinerProtocol.swift in Sources */,
+				35442BBB2BA5E34600D1E6F8 /* XCAssets+Generated.swift in Sources */,
 				35442B962BA1FFC000D1E6F8 /* ContentViewModel.swift in Sources */,
 				35DE59552BA15C1100000121 /* DeeplinkParser.swift in Sources */,
+				35442BBE2BA5F1D800D1E6F8 /* DeeplinkImportableView.swift in Sources */,
 				35442BAE2BA4C53D00D1E6F8 /* TreeNode+DeeplinkItemType.swift in Sources */,
 				356C45CC2B9ABB4C00DCA82D /* SBDeeplinkOpenerApp.swift in Sources */,
 				35442BAC2BA4B3A300D1E6F8 /* ValueRequiredTypes.swift in Sources */,
@@ -708,6 +740,17 @@
 			targetProxy = 356C45E42B9ABB4F00DCA82D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		35442BB62BA5E1F100D1E6F8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				35442BB72BA5E1F100D1E6F8 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		356C45EB2B9ABB4F00DCA82D /* Debug */ = {

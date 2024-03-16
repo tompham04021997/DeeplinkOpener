@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  SBDeeplinkOpener
+
+  Created by Tuan Pham on 16/03/2024.
+  
+*/
+
+"details.emptyState.title" = "You have't select any deeplink for opening";
+"details.emptyState.message" = "Please select the deeplink for customization and perform";
+"details.fields.deeplink" = "Deeplink";
+"details.fields.schema" = "Schema";
+"details.fields.path" = "Path";
+"details.fields.parameters" = "Parameters";
+
+"common.directory.type.folder" = "Folder";
+"common.directory.type.deeplinkFile" = "Deeplink";
+
+"common.action.import" = "Import";
+"common.action.open" = "Open";
+"common.action.save" = "Save";
+"common.action.copy" = "Copy";
+"common.action.ok" = "OK";
+
+"common.alert.copy.title" = "Copied";
+"common.alert.copy.message" = "The text has been copied to the clipboard.";
+

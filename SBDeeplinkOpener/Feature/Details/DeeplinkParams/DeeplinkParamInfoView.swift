@@ -45,23 +45,24 @@ struct DeeplinkParamInfoView: View {
             Spacer()
             
             HStack {
-                Image("delete")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 28, height: 28)
-                    .clipped()
-                    .onTapGesture {
-                        onRemoving?()
-                    }
+                    Asset.delete.swiftUIImage
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: DSIconSize.medium, height: DSIconSize.medium)
+                        .clipped()
+                        .onTapGesture {
+                            onRemoving?()
+                        }
+                    
+                    Asset.plus.swiftUIImage
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: DSIconSize.medium, height: DSIconSize.medium)
+                        .clipped()
+                        .onTapGesture {
+                            onAdding?()
+                        }
                 
-                Image("plus")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 28, height: 28)
-                    .clipped()
-                    .onTapGesture {
-                        onAdding?()
-                    }
             }
         }
         .padding(.leading, .dimensionSpace4)

@@ -29,8 +29,10 @@ final class DeeplinkDetailsViewModel: ObservableObject {
     
     // MARK: - Input
     
-    @Published var onSaveDeeplinkData = false
-    @Published var onOpenDeeplink = false
+    @Published var onSaveDeeplinkDataTrigger = false
+    @Published var onOpenDeeplinkTrigger = false
+    @Published var onCopyDeeplinkTrigger = false
+    @Published var onImportedDeeplinkTrigger = ""
     @Published var selectedDeeplink: TreeNode<DirectoryType>?
     
     // MARK: - Data
@@ -98,7 +100,7 @@ extension DeeplinkDetailsViewModel {
             .assign(to: \.deeplink, on: self)
             .store(in: &cancellables)
         
-        $onSaveDeeplinkData
+        $onSaveDeeplinkDataTrigger
             .receive(on: DispatchQueue.global(qos: .background))
             .filter { $0 }
             .compactMap { [weak self] _ -> DeeplinkEntity? in
@@ -119,7 +121,7 @@ extension DeeplinkDetailsViewModel {
             }
             .store(in: &cancellables)
         
-        $onOpenDeeplink
+        $onOpenDeeplinkTrigger
             .receive(on: DispatchQueue.global(qos: .background))
             .filter { $0 }
             .map { _ in self.deeplink }
@@ -131,7 +133,26 @@ extension DeeplinkDetailsViewModel {
             })
             .store(in: &cancellables)
         
+        $onCopyDeeplinkTrigger
+            .subscribe(on: DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
+            .map { _ in  self.deeplink }
+            .sink(receiveValue: { deeplink in
+                NSPasteboard.general.clearContents()
+                NSPasteboard.general.setString(deeplink, forType: .string)
+            })
+            .store(in: &cancellables)
+        
+        $onImportedDeeplinkTrigger
+            .dropFirst()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] importedDeeplink in
+                self?.analyzingImportedDeeplink(importedDeeplink)
+            })
+            .store(in: &cancellables)
+        
         $selectedDeeplink
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] node in
                 guard let self else { return }
                 switch node?.value {
@@ -160,6 +181,20 @@ extension DeeplinkDetailsViewModel {
                 deeplinkParams = [.empty()]
             }
             deeplink = deeplinkCombiner.combineToDeeplink(fromEntity: entity)
+        }
+    }
+    
+    private func analyzingImportedDeeplink(_ importedDeeplink: String) {
+        if let schema = try? deeplinkParser.getSchema(fromDeeplink: importedDeeplink) {
+            self.deeplinkSchema = schema
+        }
+        
+        if let path = try? deeplinkParser.getPath(fromDeeplink: importedDeeplink) {
+            self.deeplinkPath = path
+        }
+        
+        if let params = try? deeplinkParser.getParams(fromDeeplink: importedDeeplink) {
+            self.deeplinkParams = params
         }
     }
 }
