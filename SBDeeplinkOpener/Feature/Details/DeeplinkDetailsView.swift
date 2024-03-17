@@ -25,7 +25,7 @@ struct DeeplinkDetailsView: View {
     
     struct ContentView: View {
         
-        @ObservedObject var viewModel: DeeplinkDetailsViewModel
+        @StateObject var viewModel: DeeplinkDetailsViewModel
         @State private var showCopyAlert = false
         @State private var showDeeplinkInputView = false
         

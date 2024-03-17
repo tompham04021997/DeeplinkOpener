@@ -7,11 +7,11 @@
 
 import Foundation
 
-class DeeplinkParamEntity: Codable, ObservableObject {
+struct DeeplinkParamEntity {
     
     let id = UUID()
-    @Published var key: String
-    @Published var value: String
+    var key: String
+    var value: String
     
     init(key: String, value: String) {
         self.key = key
@@ -21,14 +21,25 @@ class DeeplinkParamEntity: Codable, ObservableObject {
     static func empty() -> DeeplinkParamEntity {
         DeeplinkParamEntity(key: .empty, value: .empty)
     }
+    
+    mutating func setValue(_ newValue: String) {
+        self.value = newValue
+    }
+    
+    mutating func setKey(_ newKey: String) {
+        self.key = newKey
+    }
+}
 
+extension DeeplinkParamEntity: Codable {
+    
     enum CodingKeys: CodingKey {
         case id
         case key
         case value
     }
     
-    required init(from decoder: any Decoder) throws {
+    init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.key = try container.decode(String.self, forKey: .key)
         self.value = try container.decode(String.self, forKey: .value)
@@ -42,8 +53,4 @@ class DeeplinkParamEntity: Codable, ObservableObject {
     }
 }
 
-extension DeeplinkParamEntity: Equatable {
-    static func == (lhs: DeeplinkParamEntity, rhs: DeeplinkParamEntity) -> Bool {
-        return lhs.key == rhs.key && lhs.value == rhs.value && lhs.id == rhs.id
-    }
-}
+extension DeeplinkParamEntity: Equatable {}

@@ -29,13 +29,13 @@ struct DeeplinkParamListView: View {
                             key: param.key,
                             value: param.value,
                             onKeyChanged: { newKey in
-                                let updatingParams = params
-                                updatingParams[index].key = newKey
+                                var updatingParams = params
+                                updatingParams[index].setKey(newKey)
                                 params = updatingParams
                             },
                             onValueChanged: { newValue in
-                                let updatingParams = params
-                                updatingParams[index].value = newValue
+                                var updatingParams = params
+                                updatingParams[index].setValue(newValue)
                                 params = updatingParams
                             },
                             onRemoving: {                              

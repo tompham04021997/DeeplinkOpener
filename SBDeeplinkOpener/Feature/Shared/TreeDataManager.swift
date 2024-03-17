@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Factory
+import Combine
 
 final class TreeDataManager: ObservableObject {
 
@@ -18,6 +19,8 @@ final class TreeDataManager: ObservableObject {
     
     // MARK: - Dependencies
     
+    
+    private var cancellables = Set<AnyCancellable>()
     @LazyInjected(\.dataStorageService) var dataStorageService
     
     // MARK: - Initializers
@@ -29,6 +32,19 @@ final class TreeDataManager: ObservableObject {
                 treeList = data
             }
         }
+        
+        $selectedNode
+            .filter { node -> Bool in
+                switch node?.value {
+                case .deeplink:
+                    return true
+                    
+                default:
+                    return false
+                }
+            }
+            .assign(to: \.selectedDeeplink, on: self)
+            .store(in: &cancellables)
     }
     
     func updateDeeplinkData(_ value: DeeplinkEntity) async {

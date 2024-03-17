@@ -12,18 +12,15 @@ struct DeeplinkTreeView: View {
     
     @Injected(\.treeItemViewFactory) var treeItemViewFactory
     @InjectedObject(\.treeDataManager) var treeManager
-    @StateObject var viewModel = DeeplinkTreeViewModel()
     
     var body: some View {
         List(treeManager.treeList.children, id: \.value, children: \.optionalChildren) { node in
             AnyView(
                 treeItemViewFactory.createView(
                     for: node,
+                    selection: treeManager.selectedNode,
                     onSelection: {
                         treeManager.selectedNode = node
-                        if case .deeplink = node.value {
-                            treeManager.selectedDeeplink = node
-                        }
                     },
                     onPerformAction: { action in
                         Task {
@@ -33,7 +30,7 @@ struct DeeplinkTreeView: View {
                 )
             )
         }
-        .listRowBackground(Color.red)
+        .listStyle(.inset)
     }
 }
 

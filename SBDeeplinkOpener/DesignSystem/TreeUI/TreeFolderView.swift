@@ -9,13 +9,10 @@ import SwiftUI
 
 struct TreeFolderView: View {
     
-    @State private var title: String
+    private var title: String
     
-    var onFolderNameChanged: (String) -> Void
-    
-    init(title: String, onFolderNameChanged: @escaping (String) -> Void) {
-        self._title = State(wrappedValue: title)
-        self.onFolderNameChanged = onFolderNameChanged
+    init(title: String) {
+        self.title = title
     }
     
     var body: some View {
@@ -26,20 +23,17 @@ struct TreeFolderView: View {
                 .frame(width: 20, height: 20)
                 .clipped()
             
-            EditableText(text: $title)
+            Text(title)
                 .font(.system(size: 16, weight: .regular))
                 .foregroundStyle(Color.white)
+            
+            Spacer()
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
-        .onChange(of: title) { oldValue, newValue in
-            onFolderNameChanged(newValue)
-        }
     }
 }
 
 #Preview {
-    TreeFolderView(title: "Folder name") { _ in
-        
-    }
+    TreeFolderView(title: "Folder name")
 }

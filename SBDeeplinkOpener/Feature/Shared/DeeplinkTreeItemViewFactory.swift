@@ -14,24 +14,32 @@ extension DeeplinkTreeItemViewFactory: DeeplinkTreeItemViewFactoryProtocol {
     @ViewBuilder
     func createView(
         for node: TreeNode<DirectoryType>,
+        selection: TreeNode<DirectoryType>?,
         onSelection: @escaping VoidCallBack,
         onPerformAction: @escaping (TreeDataInteractionActionType) -> Void
     ) -> some View {
-        switch node.value {
-        case .folder(let name, let id):
-            TreeFolderView(
-                title: name,
-                onFolderNameChanged: { newName in
-                    onPerformAction(.updateNodeValue(newValue: .folder(name: newName, id: id)))
-                }
-            )
-            .onTapGesture {
-                onSelection()
+        Group {
+            switch node.value {
+            case .folder(let name, _):
+                TreeFolderView(
+                    title: name
+                )
+            case .deeplink(let data):
+                DeeplinkFileView(
+                    title: data.name
+                )
             }
-            .contextMenu(
-                ContextMenu(
-                    menuItems: {
-                        Menu("Create") {
+        }
+        .onTapGesture {
+            onSelection()
+        }
+        .background(makeBackgroundColor(for: node, selection: selection))
+        .clipShape(RoundedRectangle(cornerRadius: .dimensionSpace3))
+        .contextMenu(
+            ContextMenu(
+                menuItems: {
+                    if case .folder = node.value {
+                        Menu(L10n.Common.Action.create) {
                             Button("Folder") {
                                 onPerformAction(.createFolder)
                             }
@@ -39,40 +47,25 @@ extension DeeplinkTreeItemViewFactory: DeeplinkTreeItemViewFactoryProtocol {
                                 onPerformAction(.createDeeplink)
                             }
                         }
-                        
-                        Button("Remove") {
-                            onPerformAction(.removeNode(node: node))
-                        }
                     }
-                )
-            )
-        case .deeplink(let data):
-            DeeplinkFileView(
-                title: data.name,
-                onFileNameChanged: {
-                    newName in
-                    data.name = newName
-                    onPerformAction(
-                        .updateNodeValue(
-                            newValue: .deeplink(
-                                data: data
-                            )
-                        )
-                    )
+                    
+                    Button(L10n.Common.Action.remove) {
+                        onPerformAction(.removeNode(node: node))
+                    }
+                    
+                    Button(L10n.Common.Action.rename) {
+                        
+                    }
                 }
             )
-            .onTapGesture {
-                onSelection()
-            }
-            .contextMenu(
-                ContextMenu(
-                    menuItems: {
-                        Button("Remove") {
-                            onPerformAction(.removeNode(node: node))
-                        }
-                    }
-                )
-            )
+        )
+    }
+    
+    private func makeBackgroundColor(for node: TreeNode<DirectoryType>, selection: TreeNode<DirectoryType>?) -> Color {
+        if node.nodeID == selection?.nodeID {
+            return Color.blue
         }
+        
+        return Color.clear
     }
 }

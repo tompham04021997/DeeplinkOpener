@@ -21,6 +21,9 @@
 "common.action.save" = "Save";
 "common.action.copy" = "Copy";
 "common.action.ok" = "OK";
+"common.action.create" = "Create";
+"common.action.remove" = "Remove";
+"common.action.rename" = "Rename";
 
 "common.alert.copy.title" = "Copied";
 "common.alert.copy.message" = "The text has been copied to the clipboard.";

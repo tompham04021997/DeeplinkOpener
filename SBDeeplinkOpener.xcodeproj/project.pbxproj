@@ -65,7 +65,6 @@
 		35DE59532BA15C0300000121 /* DeeplinkParserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59522BA15C0300000121 /* DeeplinkParserProtocol.swift */; };
 		35DE59552BA15C1100000121 /* DeeplinkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59542BA15C1100000121 /* DeeplinkParser.swift */; };
 		35DE59572BA15C2400000121 /* DeeplinkParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59562BA15C2400000121 /* DeeplinkParserError.swift */; };
-		35DE595C2BA162A700000121 /* DeeplinkTreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE595B2BA162A700000121 /* DeeplinkTreeViewModel.swift */; };
 		35DE595E2BA1665C00000121 /* LocalDataStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE595D2BA1665C00000121 /* LocalDataStorageService.swift */; };
 		35DE59612BA17CAD00000121 /* EditableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE59602BA17CAD00000121 /* EditableText.swift */; };
 /* End PBXBuildFile section */
@@ -149,7 +148,6 @@
 		35DE59522BA15C0300000121 /* DeeplinkParserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParserProtocol.swift; sourceTree = "<group>"; };
 		35DE59542BA15C1100000121 /* DeeplinkParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParser.swift; sourceTree = "<group>"; };
 		35DE59562BA15C2400000121 /* DeeplinkParserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParserError.swift; sourceTree = "<group>"; };
-		35DE595B2BA162A700000121 /* DeeplinkTreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkTreeViewModel.swift; sourceTree = "<group>"; };
 		35DE595D2BA1665C00000121 /* LocalDataStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStorageService.swift; sourceTree = "<group>"; };
 		35DE59602BA17CAD00000121 /* EditableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -408,7 +406,6 @@
 			isa = PBXGroup;
 			children = (
 				356C45F82B9ABD6F00DCA82D /* DeeplinkTreeView.swift */,
-				35DE595B2BA162A700000121 /* DeeplinkTreeViewModel.swift */,
 			);
 			path = DeeplinkTreeList;
 			sourceTree = "<group>";
@@ -676,7 +673,6 @@
 				356C46082B9AD39B00DCA82D /* AppDeeplinkOpener.swift in Sources */,
 				356C45F92B9ABD6F00DCA82D /* DeeplinkTreeView.swift in Sources */,
 				356C45CE2B9ABB4C00DCA82D /* ContentView.swift in Sources */,
-				35DE595C2BA162A700000121 /* DeeplinkTreeViewModel.swift in Sources */,
 				35DE59502BA1579B00000121 /* DirectoryType.swift in Sources */,
 				35442B9F2BA2CCB100D1E6F8 /* DeeplinkTreeItemViewFactory.swift in Sources */,
 				353F20C22B9F1AFF0032CE95 /* VoidCallBack.swift in Sources */,

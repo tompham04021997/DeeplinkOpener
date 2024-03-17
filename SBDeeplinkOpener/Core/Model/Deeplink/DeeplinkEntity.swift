@@ -7,15 +7,15 @@
 
 import Foundation
 
-final class DeeplinkEntity: Codable {
+struct DeeplinkEntity {
     
     // MARK: - Properties
 
-    var id: String
-    var name: String
-    var schema: String
-    var path: String
-    var params: [DeeplinkParamEntity]?
+    let id: String
+    let name: String
+    let schema: String
+    let path: String
+    let params: [DeeplinkParamEntity]?
     
     init(id: String = UUID().uuidString, name: String, schema: String, path: String, params: [DeeplinkParamEntity]? = nil) {
         self.id = id
@@ -24,12 +24,14 @@ final class DeeplinkEntity: Codable {
         self.path = path
         self.params = params
     }
-    
+}
+
+extension DeeplinkEntity: Codable {
     private enum CodingKeys: String, CodingKey {
         case id, name, schema, path, params
     }
     
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = (try? container.decode(String.self, forKey: .id)) ?? ""
         name = (try? container.decode(String.self, forKey: .name)) ?? ""
@@ -45,15 +47,6 @@ final class DeeplinkEntity: Codable {
         try container.encode(schema, forKey: .schema)
         try container.encode(path, forKey: .path)
         try container.encodeIfPresent(params, forKey: .params)
-    }
-    
-    func cloned() -> DeeplinkEntity {
-        return DeeplinkEntity(
-            id: id,
-            name: name,
-            schema: schema,
-            path: path
-        )
     }
 }
 

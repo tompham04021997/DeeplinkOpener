@@ -25,8 +25,7 @@ struct ContentView: View {
         } detail: {
             DeeplinkDetailsView(
                 viewModel: DeeplinkDetailsViewModel(
-                    selectedSimulator: viewModel.selectedSimulator.entity,
-                    selectedDeeplink: treeDataManager.selectedDeeplink
+                    selectedSimulator: viewModel.selectedSimulator.entity
                 )
             )
             .navigationTitle("")

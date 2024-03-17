@@ -14,12 +14,18 @@ internal enum L10n {
     internal enum Action {
       /// Copy
       internal static let copy = L10n.tr("Localizable", "common.action.copy", fallback: "Copy")
+      /// Create
+      internal static let create = L10n.tr("Localizable", "common.action.create", fallback: "Create")
       /// Import
       internal static let `import` = L10n.tr("Localizable", "common.action.import", fallback: "Import")
       /// OK
       internal static let ok = L10n.tr("Localizable", "common.action.ok", fallback: "OK")
       /// Open
       internal static let `open` = L10n.tr("Localizable", "common.action.open", fallback: "Open")
+      /// Remove
+      internal static let remove = L10n.tr("Localizable", "common.action.remove", fallback: "Remove")
+      /// Rename
+      internal static let rename = L10n.tr("Localizable", "common.action.rename", fallback: "Rename")
       /// Save
       internal static let save = L10n.tr("Localizable", "common.action.save", fallback: "Save")
     }

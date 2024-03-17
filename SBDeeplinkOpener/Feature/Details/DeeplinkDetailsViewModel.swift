@@ -33,11 +33,11 @@ final class DeeplinkDetailsViewModel: ObservableObject {
     @Published var onOpenDeeplinkTrigger = false
     @Published var onCopyDeeplinkTrigger = false
     @Published var onImportedDeeplinkTrigger = ""
-    @Published var selectedDeeplink: TreeNode<DirectoryType>?
     
     // MARK: - Data
     
-    private var originalDeeplinkEntity: DeeplinkEntity?
+    @Published private var editableDeeplinkEntity: DeeplinkEntity?
+    
     private var deeplinkID: String = .empty
     private var deeplinkName: String = .empty
     let selectedSimulator: Simulator
@@ -51,11 +51,9 @@ final class DeeplinkDetailsViewModel: ObservableObject {
     @LazyInjected(\.treeDataManager) var treeDataManager
     
     init(
-        selectedSimulator: Simulator,
-        selectedDeeplink: TreeNode<DirectoryType>? = nil
+        selectedSimulator: Simulator
     ) {
         self.selectedSimulator = selectedSimulator
-        self.selectedDeeplink = selectedDeeplink
         
         setupBindingDataFlow()
     }
@@ -89,7 +87,7 @@ extension DeeplinkDetailsViewModel {
             .handleEvents(
                 receiveOutput: { [weak self] entity in
                     guard let self else { return }
-                    self.isSavingButtonEnabled = entity != self.originalDeeplinkEntity
+                    self.editableDeeplinkEntity = entity
                 }
             )
             .receive(on: DispatchQueue.global(qos: .default))
@@ -151,7 +149,7 @@ extension DeeplinkDetailsViewModel {
             })
             .store(in: &cancellables)
         
-        $selectedDeeplink
+        treeDataManager.$selectedDeeplink
             .receive(on: DispatchQueue.main)
             .sink { [weak self] node in
                 guard let self else { return }
@@ -165,10 +163,26 @@ extension DeeplinkDetailsViewModel {
                 }
             }
             .store(in: &cancellables)
+        
+        treeDataManager.$selectedDeeplink
+            .compactMap { node -> DeeplinkEntity? in
+                if case .deeplink(let data) = node?.value {
+                    return data
+                }
+                
+                return nil
+            }
+            .combineLatest(
+                $editableDeeplinkEntity
+            )
+            .map { lhsEntity, rhsEntity -> Bool in
+                return lhsEntity != rhsEntity
+            }
+            .assign(to: \.isSavingButtonEnabled, on: self)
+            .store(in: &cancellables)
     }
     
     private func initializeDataIfPossible(withEntity entity: DeeplinkEntity?) {
-        originalDeeplinkEntity = entity?.cloned()
         if let entity {
             deeplinkID = entity.id
             deeplinkName = entity.name
