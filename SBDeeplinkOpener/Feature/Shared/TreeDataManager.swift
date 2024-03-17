@@ -43,6 +43,9 @@ final class TreeDataManager: ObservableObject {
                     return false
                 }
             }
+            .removeDuplicates(by: { lhsNode, rhsNode in
+                return lhsNode?.value == rhsNode?.value
+            })
             .assign(to: \.selectedDeeplink, on: self)
             .store(in: &cancellables)
     }
@@ -51,6 +54,14 @@ final class TreeDataManager: ObservableObject {
         guard let nodeID = selectedDeeplink?.nodeID else { return }
         let temperatureTreeList = treeList
         temperatureTreeList.updateValue(.deeplink(data: value), forNodeID: nodeID)
+        
+        if let tempDeeplink = selectedDeeplink {
+            tempDeeplink.updateValue(.deeplink(data: value))
+            await MainActor.run {
+                selectedDeeplink = tempDeeplink
+            }
+        }
+        
         await MainActor.run {
             treeList = temperatureTreeList
         }
@@ -61,11 +72,11 @@ final class TreeDataManager: ObservableObject {
         
         let temperatureTreeList = treeList
         switch action {
-        case .createFolder:
-            temperatureTreeList.add(child: .folder(), toNodeWithID: node.nodeID)
+        case .createFolder(let name):
+            temperatureTreeList.add(child: .folder(name: name), toNodeWithID: node.nodeID)
 
-        case .createDeeplink:
-            temperatureTreeList.add(child: .deeplinkFile(), toNodeWithID: node.nodeID)
+        case .createDeeplink(let name):
+            temperatureTreeList.add(child: .deeplinkFile(name: name), toNodeWithID: node.nodeID)
             
         case .updateNodeValue(let newValue):
             node.value = newValue

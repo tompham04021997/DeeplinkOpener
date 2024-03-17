@@ -8,19 +8,27 @@
 import SwiftUI
 
 struct DeeplinkDetailsView: View {
-    @ObservedObject var viewModel: DeeplinkDetailsViewModel
+    @StateObject var viewModel: DeeplinkDetailsViewModel
     
     var body: some View {
         
-        switch viewModel.dataState {
-        case .initialized:
-            EmptyStateView(
-                title: L10n.Details.EmptyState.title,
-                message: L10n.Details.EmptyState.message
-            )
-        case .loaded:
-            ContentView(viewModel: viewModel)
+        Group {
+            switch viewModel.dataState {
+            case .empty:
+                EmptyStateView(
+                    title: L10n.Details.EmptyState.title,
+                    message: L10n.Details.EmptyState.message
+                )
+                
+            case .loading:
+                LoadingView()
+                
+            case .loaded:
+                ContentView(viewModel: viewModel)
+            }
         }
+        .transition(.slide)
+        .animation(.default, value: viewModel.dataState)
     }
     
     struct ContentView: View {
@@ -40,7 +48,7 @@ struct DeeplinkDetailsView: View {
                         ActionButtons()
                         Spacer()
                     }
-                    .padding(.all, 64)
+                    .padding(.all, .dimensionSpace15)
                 }
                 .frame(width: proxy.size.width, height: proxy.size.height)
             }

@@ -62,6 +62,9 @@ struct DeeplinkParamListView: View {
                 Button("Confirm") {
                     if let removingParamIndex {
                         params.remove(at: removingParamIndex)
+                        if params.isEmpty {
+                            params = [.empty()]
+                        }
                     }
                 }
                 

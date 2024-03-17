@@ -12,10 +12,12 @@ struct DeeplinkEntity {
     // MARK: - Properties
 
     let id: String
-    let name: String
+    var name: String
     let schema: String
     let path: String
     let params: [DeeplinkParamEntity]?
+    
+    // MARK: - Initializers
     
     init(id: String = UUID().uuidString, name: String, schema: String, path: String, params: [DeeplinkParamEntity]? = nil) {
         self.id = id
@@ -24,7 +26,13 @@ struct DeeplinkEntity {
         self.path = path
         self.params = params
     }
+    
+    mutating func setName(_ newValue: String) {
+        self.name = newValue
+    }
 }
+
+// MARK: - Codable
 
 extension DeeplinkEntity: Codable {
     private enum CodingKeys: String, CodingKey {
@@ -49,6 +57,8 @@ extension DeeplinkEntity: Codable {
         try container.encodeIfPresent(params, forKey: .params)
     }
 }
+
+// MARK: - Equatable
 
 extension DeeplinkEntity: Equatable {
     static func == (lhs: DeeplinkEntity, rhs: DeeplinkEntity) -> Bool {

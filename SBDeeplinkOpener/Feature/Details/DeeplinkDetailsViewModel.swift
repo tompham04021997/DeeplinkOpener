@@ -10,7 +10,8 @@ import Combine
 import Factory
 
 enum DeeplinkDetailsDataState {
-    case initialized
+    case loading
+    case empty
     case loaded
 }
 
@@ -20,7 +21,7 @@ final class DeeplinkDetailsViewModel: ObservableObject {
     
     // MARK: - Output
     
-    @Published var dataState: DeeplinkDetailsDataState = .initialized
+    @Published var dataState: DeeplinkDetailsDataState = .loading
     @Published var deeplinkSchema: String = .empty
     @Published var deeplinkPath: String = .empty
     @Published var deeplinkParams = [DeeplinkParamEntity]()
@@ -83,6 +84,7 @@ extension DeeplinkDetailsViewModel {
                     params: params
                 )
             }
+            .removeDuplicates()
             .receive(on: DispatchQueue.main)
             .handleEvents(
                 receiveOutput: { [weak self] entity in
@@ -150,17 +152,20 @@ extension DeeplinkDetailsViewModel {
             .store(in: &cancellables)
         
         treeDataManager.$selectedDeeplink
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] node in
-                guard let self else { return }
+            .compactMap { node -> DeeplinkEntity? in
                 switch node?.value {
                 case .deeplink(let data):
-                    self.initializeDataIfPossible(withEntity: data)
-                    self.dataState = .loaded
+                    return data
                     
                 default:
-                    break
+                    return nil
                 }
+            }
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] data in
+                guard let self else { return }
+                self.initializeDataIfPossible(withEntity: data)
             }
             .store(in: &cancellables)
         
@@ -178,6 +183,7 @@ extension DeeplinkDetailsViewModel {
             .map { lhsEntity, rhsEntity -> Bool in
                 return lhsEntity != rhsEntity
             }
+            .removeDuplicates()
             .assign(to: \.isSavingButtonEnabled, on: self)
             .store(in: &cancellables)
     }
@@ -195,6 +201,15 @@ extension DeeplinkDetailsViewModel {
                 deeplinkParams = [.empty()]
             }
             deeplink = deeplinkCombiner.combineToDeeplink(fromEntity: entity)
+            moveDateState(to: .loaded)
+        } else {
+            moveDateState(to: .empty)
+        }
+    }
+    
+    private func moveDateState(to newState: DeeplinkDetailsDataState) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)) {
+            self.dataState = newState
         }
     }
     

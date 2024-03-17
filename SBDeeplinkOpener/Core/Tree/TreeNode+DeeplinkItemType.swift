@@ -35,10 +35,10 @@ extension TreeNode where Value == DirectoryType {
     /// Create a default folder with name `Folder` node.
     /// 
     /// - Returns: A folder node.
-    static func folder() -> TreeNode<DirectoryType> {
+    static func folder(name: String = "Folder") -> TreeNode<DirectoryType> {
         return .init(
             value: .folder(
-                name: "Folder",
+                name: name,
                 id: UUID().uuidString
             )
         )
@@ -47,11 +47,11 @@ extension TreeNode where Value == DirectoryType {
     /// Create a default deeplink with schema is `Shopback` node.
     /// 
     /// - Returns: A deeplink node.
-    static func deeplinkFile() -> TreeNode<DirectoryType> {
+    static func deeplinkFile(name: String = "Deeplink") -> TreeNode<DirectoryType> {
         return .init(
             value: .deeplink(
                 data: .init(
-                    name: "Deeplink",
+                    name: name,
                     schema: "shopback",
                     path: .empty
                 )

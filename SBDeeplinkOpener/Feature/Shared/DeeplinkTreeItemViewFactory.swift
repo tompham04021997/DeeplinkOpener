@@ -9,6 +9,8 @@ import SwiftUI
 
 final class DeeplinkTreeItemViewFactory {}
 
+// MARK: - DeeplinkTreeItemViewFactoryProtocol
+
 extension DeeplinkTreeItemViewFactory: DeeplinkTreeItemViewFactoryProtocol {
     
     @ViewBuilder
@@ -18,7 +20,12 @@ extension DeeplinkTreeItemViewFactory: DeeplinkTreeItemViewFactoryProtocol {
         onSelection: @escaping VoidCallBack,
         onPerformAction: @escaping (TreeDataInteractionActionType) -> Void
     ) -> some View {
-        Group {
+        DirectoryWrapperView(
+            node,
+            selection: selection,
+            onSelection: onSelection,
+            onPerformAction: onPerformAction
+        ) {
             switch node.value {
             case .folder(let name, _):
                 TreeFolderView(
@@ -30,42 +37,5 @@ extension DeeplinkTreeItemViewFactory: DeeplinkTreeItemViewFactoryProtocol {
                 )
             }
         }
-        .onTapGesture {
-            onSelection()
-        }
-        .background(makeBackgroundColor(for: node, selection: selection))
-        .clipShape(RoundedRectangle(cornerRadius: .dimensionSpace3))
-        .contextMenu(
-            ContextMenu(
-                menuItems: {
-                    if case .folder = node.value {
-                        Menu(L10n.Common.Action.create) {
-                            Button("Folder") {
-                                onPerformAction(.createFolder)
-                            }
-                            Button("Deeplink") {
-                                onPerformAction(.createDeeplink)
-                            }
-                        }
-                    }
-                    
-                    Button(L10n.Common.Action.remove) {
-                        onPerformAction(.removeNode(node: node))
-                    }
-                    
-                    Button(L10n.Common.Action.rename) {
-                        
-                    }
-                }
-            )
-        )
-    }
-    
-    private func makeBackgroundColor(for node: TreeNode<DirectoryType>, selection: TreeNode<DirectoryType>?) -> Color {
-        if node.nodeID == selection?.nodeID {
-            return Color.blue
-        }
-        
-        return Color.clear
     }
 }

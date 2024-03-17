@@ -8,8 +8,8 @@
 import Foundation
 
 enum TreeDataInteractionActionType {
-    case createFolder
-    case createDeeplink
+    case createFolder(name: String)
+    case createDeeplink(name: String)
     case updateNodeValue(newValue: DirectoryType)
     case removeNode(node: TreeNode<DirectoryType>)
 }
