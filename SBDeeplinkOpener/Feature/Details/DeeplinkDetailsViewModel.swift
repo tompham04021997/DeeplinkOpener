@@ -10,7 +10,6 @@ import Combine
 import Factory
 
 enum DeeplinkDetailsDataState {
-    case loading
     case empty
     case loaded
 }
@@ -21,7 +20,7 @@ final class DeeplinkDetailsViewModel: ObservableObject {
     
     // MARK: - Output
     
-    @Published var dataState: DeeplinkDetailsDataState = .loading
+    @Published var dataState: DeeplinkDetailsDataState = .empty
     @Published var deeplinkSchema: String = .empty
     @Published var deeplinkPath: String = .empty
     @Published var deeplinkParams = [DeeplinkParamEntity]()
@@ -41,7 +40,6 @@ final class DeeplinkDetailsViewModel: ObservableObject {
     
     private var deeplinkID: String = .empty
     private var deeplinkName: String = .empty
-    let selectedSimulator: Simulator
     
     // MARK: - Dependencies
     private var cancellables = Set<AnyCancellable>()
@@ -50,12 +48,9 @@ final class DeeplinkDetailsViewModel: ObservableObject {
     @LazyInjected(\.deeplinkCombiner) var deeplinkCombiner
     @LazyInjected(\.deeplinkOpener) var deeplinkOpener
     @LazyInjected(\.treeDataManager) var treeDataManager
+    @LazyInjected(\.simulatorDataObserverManager) var simulatorDataObserverManager
     
-    init(
-        selectedSimulator: Simulator
-    ) {
-        self.selectedSimulator = selectedSimulator
-        
+    init() {
         setupBindingDataFlow()
     }
 }
@@ -124,11 +119,9 @@ extension DeeplinkDetailsViewModel {
         $onOpenDeeplinkTrigger
             .receive(on: DispatchQueue.global(qos: .background))
             .filter { $0 }
-            .map { _ in self.deeplink }
-            .sink(receiveValue: { [weak self] deeplink in
-                guard let deeplinkOpener = self?.deeplinkOpener,
-                      let device = self?.selectedSimulator
-                else { return }
+            .map { _ in (self.deeplink, self.simulatorDataObserverManager.selectedSimulator) }
+            .sink(receiveValue: { [weak self] deeplink, device in
+                guard let deeplinkOpener = self?.deeplinkOpener, let device else { return }
                 deeplinkOpener.openDeeplink(deeplink, on: device)
             })
             .store(in: &cancellables)
@@ -208,9 +201,7 @@ extension DeeplinkDetailsViewModel {
     }
     
     private func moveDateState(to newState: DeeplinkDetailsDataState) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)) {
-            self.dataState = newState
-        }
+        self.dataState = newState
     }
     
     private func analyzingImportedDeeplink(_ importedDeeplink: String) {

@@ -9,18 +9,22 @@ import SwiftUI
 
 struct SimulatorListView: View {
     
-    let simulators: [SimulatorInfoViewModel]
-    @Binding var selectionSimulator: SimulatorInfoViewModel
+    @StateObject var viewModel = SimulatorListViewModel()
     var onSelection: VoidCallBack?
     
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
                 VStack(spacing: .zero) {
-                    ForEach(simulators, id: \.id) { simulator in
+                    ForEach(viewModel.items, id: \.id) { item in
                         SimulatorInfoView(
-                            viewModel: simulator,
-                            selectionSimulator: $selectionSimulator, onSelection: onSelection).tag(simulator.id)
+                            viewModel: item,
+                            selectionSimulator: viewModel.selectedItem,
+                            onSelection: {
+                                viewModel.updateSelectedSimulator(item.entity)
+                                onSelection?()
+                            }
+                        ).tag(item.id)
                     }
                 }
             }
@@ -29,8 +33,5 @@ struct SimulatorListView: View {
 }
 
 #Preview {
-    SimulatorListView(
-        simulators: SimulatorManager().getAvailableSimulators().map { .init(entity: $0)},
-        selectionSimulator: .constant(.init(entity: SimulatorManager().getAvailableSimulators().first!))
-    )
+    SimulatorListView()
 }

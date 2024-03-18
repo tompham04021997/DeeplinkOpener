@@ -26,29 +26,17 @@ struct SimulatorInfoViewModel {
     var iOSVersion: String {
         return entity.version
     }
-    
-    var simulatorState: SimulatorState {
-        return entity.state
-    }
-}
-
-extension SimulatorInfoViewModel: Hashable {
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
 }
 
 struct SimulatorInfoView: View {
     
     let viewModel: SimulatorInfoViewModel
-    @Binding var selectionSimulator: SimulatorInfoViewModel
+    let selectionSimulator: SimulatorInfoViewModel
     var onSelection: VoidCallBack?
     
     var body: some View {
         HStack(alignment: .center) {
             HStack(alignment: .center, spacing: 8) {
-                StatusView(simulatorState: viewModel.simulatorState)
                 IPhoneView()
                 TitleView(title: viewModel.title)
             }
@@ -61,7 +49,6 @@ struct SimulatorInfoView: View {
         .padding(.vertical, 4)
         .background(backgroundColor)
         .onTapGesture {
-            selectionSimulator = viewModel
             onSelection?()
         }
     }
@@ -139,13 +126,13 @@ extension SimulatorInfoView {
                 state: .booted
             )
         ),
-        selectionSimulator: .constant(SimulatorInfoViewModel(
+        selectionSimulator: SimulatorInfoViewModel(
             entity: Simulator(
                 version: "16.0",
                 name: "iPhone 14",
                 uuid: "BCDEF12-34567890ABCDEF12",
                 state: .booted
             )
-        ))
+        )
     )
 }

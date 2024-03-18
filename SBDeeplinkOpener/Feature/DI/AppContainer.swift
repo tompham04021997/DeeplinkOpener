@@ -45,6 +45,13 @@ extension Container {
         .scope(.shared)
     }
     
+    var simulatorDataObserverManager: Factory<SimulatorDataObserverManager> {
+        self {
+            SimulatorDataObserverManager()
+        }
+        .scope(.singleton)
+    }
+    
     var simulatorDataParser: Factory<SimulatorDataParserProtocol> {
         self {
             SimulatorDataParser()

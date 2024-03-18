@@ -20,9 +20,6 @@ struct DeeplinkDetailsView: View {
                     message: L10n.Details.EmptyState.message
                 )
                 
-            case .loading:
-                LoadingView()
-                
             case .loaded:
                 ContentView(viewModel: viewModel)
             }
@@ -199,14 +196,7 @@ extension DeeplinkDetailsView {
 
 #Preview {
     DeeplinkDetailsView(
-        viewModel: DeeplinkDetailsViewModel(
-            selectedSimulator: Simulator(
-                version: "16.0",
-                name: "iPhone 14 (BCDEF12-34567890ABCDEF12)",
-                uuid: "BCDEF12-34567890ABCDEF12",
-                state: .shutdown
-            )
-        )
+        viewModel: DeeplinkDetailsViewModel()
     )
     .frame(
         minWidth: 200,
