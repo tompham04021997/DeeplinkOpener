@@ -18,6 +18,7 @@ final class SimulatorDataObserverManager: ObservableObject {
     
     init() {
         simulators = manager.getAvailableSimulators()
+        
         if let availableBootedSimulator = simulators.first(where: { $0.state == .booted }) {
             selectedSimulator = availableBootedSimulator
         } else {
