@@ -42,7 +42,6 @@ struct DeeplinkDetailsView: View {
                         DeeplinkParamListView(
                             params: $viewModel.deeplinkParams
                         )
-                        ActionButtons()
                         Spacer()
                     }
                     .padding(.all, .dimensionSpace15)
@@ -133,63 +132,6 @@ struct DeeplinkDetailsView: View {
                     viewModel.onImportedDeeplinkTrigger = deeplink
                 }
             }
-        }
-
-        private func ActionButtons() -> some View {
-            HStack(spacing: .dimensionSpace4) {
-                OpenButton()
-                SaveButton()
-            }
-            .padding(.top, .dimensionSpace15)
-        }
-        
-        private func OpenButton() -> some View {
-            ActionButton(title: L10n.Common.Action.open) {
-                viewModel.onOpenDeeplinkTrigger = true
-            }
-        }
-        
-        private func SaveButton() -> some View {
-            ActionButton(
-                title: L10n.Common.Action.save,
-                isDisabled: !viewModel.isSavingButtonEnabled
-            ) {
-                viewModel.onSaveDeeplinkDataTrigger = true
-            }
-        }
-    }
-}
-
-extension DeeplinkDetailsView {
-    
-    struct ActionButton: View {
-        
-        let title: String
-        let isDisabled: Bool
-        var action: VoidCallBack?
-        
-        init(title: String, isDisabled: Bool = false, action: VoidCallBack? = nil) {
-            self.title = title
-            self.isDisabled = isDisabled
-            self.action = action
-        }
-        
-        var body: some View {
-            Button {
-                action?()
-            } label: {
-                HStack {
-                    Spacer()
-                    Text(title)
-                        .font(.bodyM)
-                        .foregroundStyle(.white)
-                    Spacer()
-                }
-                .frame(width: 128, height: .dimensionSpace10)
-            }
-            .disabled(isDisabled)
-            .buttonStyle(.borderedProminent)
-            .tint(isDisabled ? .gray : .green)
         }
     }
 }

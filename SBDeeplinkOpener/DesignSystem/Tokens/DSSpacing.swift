@@ -15,8 +15,11 @@ extension CGFloat {
     /// 🍄 dimensionSpace1 - spacing: 2 pt
     static let dimensionSpace1: CGFloat = 2
     
-    /// 🍄 dimensionSpace2 - spacing: 4 pt
+    /// 🍄 dimensionSpace2_5 - spacing: 46pt
     static let dimensionSpace2: CGFloat = 4
+    
+    /// 🍄 dimensionSpace2 - spacing: 4 pt
+    static let dimensionSpace2_5: CGFloat = 6
     
     /// 🍄 dimensionSpace3 - spacing: 8 pt
     static let dimensionSpace3: CGFloat = 8

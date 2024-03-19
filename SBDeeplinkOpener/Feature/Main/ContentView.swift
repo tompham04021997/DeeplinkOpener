@@ -28,7 +28,7 @@ struct ContentView: View {
             .navigationTitle("")
         }
         .toolbar {
-            ToolbarItem(placement: .principal) {
+            ToolbarItemGroup {
                 AppToolBarView()
             }
         }

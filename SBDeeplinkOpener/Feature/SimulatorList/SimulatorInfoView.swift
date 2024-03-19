@@ -7,43 +7,23 @@
 
 import SwiftUI
 
-struct SimulatorInfoViewModel {
-    
-    let entity: Simulator
-    
-    init(entity: Simulator) {
-        self.entity = entity
-    }
-    
-    var id: String {
-        return entity.uuid
-    }
-    
-    var title: String {
-        return entity.name
-    }
-    
-    var iOSVersion: String {
-        return entity.version
-    }
-}
-
 struct SimulatorInfoView: View {
     
-    let viewModel: SimulatorInfoViewModel
-    let selectionSimulator: SimulatorInfoViewModel
+    let simulator: Simulator
+    let selectionSimulator: Simulator
     var onSelection: VoidCallBack?
     
     var body: some View {
         HStack(alignment: .center) {
-            HStack(alignment: .center, spacing: 8) {
-                IPhoneView()
-                TitleView(title: viewModel.title)
+            IPhoneView()
+            VStack {
+                TitleView(title: simulator.name)
+                DeviceIDView(id: simulator.uuid)
             }
             
             Spacer()
             
-            VersionView(version: viewModel.iOSVersion)
+            VersionView(version: simulator.version)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 4)
@@ -54,11 +34,11 @@ struct SimulatorInfoView: View {
     }
     
     var backgroundColor: Color {
-        if viewModel.id == selectionSimulator.id {
-            return Color.blue.opacity(0.25)
+        if simulator.uuid == selectionSimulator.uuid {
+            return Color.green
         }
         
-        return Color.black.opacity(0.85)
+        return Color.grey60
     }
 }
 
@@ -98,9 +78,23 @@ extension SimulatorInfoView {
         let title: String
         
         var body: some View {
-            Text(title)
-                .font(.system(size: 12, weight: .regular))
-                .foregroundStyle(Color.white)
+            HStack {
+                Text(title)
+                    .font(.system(size: 12, weight: .regular))
+                Spacer()
+            }
+        }
+    }
+    
+    struct DeviceIDView: View {
+        
+        let id: String
+        var body: some View {
+            HStack {
+                Text(id)
+                    .font(.system(size: 8, weight: .thin))
+                Spacer()
+            }
         }
     }
     
@@ -111,28 +105,23 @@ extension SimulatorInfoView {
         var body: some View {
             Text(version)
                 .font(.system(size: 12).weight(.thin))
-                .foregroundStyle(Color.white.opacity(0.7))
         }
     }
 }
 
 #Preview {
     SimulatorInfoView(
-        viewModel: SimulatorInfoViewModel(
-            entity: Simulator(
-                version: "16.0",
-                name: "iPhone 14",
-                uuid: "BCDEF12-34567890ABCDEF12",
-                state: .booted
-            )
+        simulator: Simulator(
+            version: "16.0",
+            name: "iPhone 14",
+            uuid: "BCDEF12-34567890ABCDEF12",
+            state: .booted
         ),
-        selectionSimulator: SimulatorInfoViewModel(
-            entity: Simulator(
-                version: "16.0",
-                name: "iPhone 14",
-                uuid: "BCDEF12-34567890ABCDEF12",
-                state: .booted
-            )
+        selectionSimulator: Simulator(
+            version: "16.0",
+            name: "iPhone 14",
+            uuid: "BCDEF12-34567890ABCDEF12",
+            state: .booted
         )
     )
 }

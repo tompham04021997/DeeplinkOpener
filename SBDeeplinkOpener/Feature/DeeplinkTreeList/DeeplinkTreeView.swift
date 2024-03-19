@@ -30,7 +30,9 @@ struct DeeplinkTreeView: View {
                 )
             )
         }
-        .listStyle(.inset)
+        .listRowSeparator(.hidden)
+        .listRowInsets(.none)
+        .listStyle(.automatic)
     }
 }
 

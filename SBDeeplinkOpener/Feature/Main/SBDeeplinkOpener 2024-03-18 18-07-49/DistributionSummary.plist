@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SBDeeplinkOpener</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>x86_64</string>
+				<string>arm64</string>
+			</array>
+			<key>buildNumber</key>
+			<string>31</string>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>1812103BB81C562CACE1241F87AE12115311B0CE</string>
+				<key>dateExpires</key>
+				<string>18/03/2025</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>name</key>
+			<string>SBDeeplinkOpener.app</string>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>8G29ZZ5JTD</string>
+				<key>name</key>
+				<string>Pham Anh Tuan</string>
+			</dict>
+			<key>versionNumber</key>
+			<string>1.0</string>
+		</dict>
+	</array>
+</dict>
+</plist>

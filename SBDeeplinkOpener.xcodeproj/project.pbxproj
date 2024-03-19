@@ -10,6 +10,7 @@
 		3512282A2BA82B280079FEDD /* SimulatorDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351228292BA82B280079FEDD /* SimulatorDataManager.swift */; };
 		3512282C2BA82DAA0079FEDD /* SimulatorListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512282B2BA82DAA0079FEDD /* SimulatorListViewModel.swift */; };
 		3512282E2BA834D80079FEDD /* AppToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512282D2BA834D80079FEDD /* AppToolBarView.swift */; };
+		351228302BA8A5800079FEDD /* AppGlobalActionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512282F2BA8A5800079FEDD /* AppGlobalActionState.swift */; };
 		353F20A72B9F0BD70032CE95 /* Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353F20A62B9F0BD70032CE95 /* Simulator.swift */; };
 		353F20A92B9F0BFC0032CE95 /* SimulatorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353F20A82B9F0BFC0032CE95 /* SimulatorState.swift */; };
 		353F20AB2B9F0C1C0032CE95 /* SimulatorDataParserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353F20AA2B9F0C1C0032CE95 /* SimulatorDataParserProtocol.swift */; };
@@ -98,6 +99,7 @@
 		351228292BA82B280079FEDD /* SimulatorDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorDataManager.swift; sourceTree = "<group>"; };
 		3512282B2BA82DAA0079FEDD /* SimulatorListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorListViewModel.swift; sourceTree = "<group>"; };
 		3512282D2BA834D80079FEDD /* AppToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToolBarView.swift; sourceTree = "<group>"; };
+		3512282F2BA8A5800079FEDD /* AppGlobalActionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobalActionState.swift; sourceTree = "<group>"; };
 		353F20A62B9F0BD70032CE95 /* Simulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
 		353F20A82B9F0BFC0032CE95 /* SimulatorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorState.swift; sourceTree = "<group>"; };
 		353F20AA2B9F0C1C0032CE95 /* SimulatorDataParserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorDataParserProtocol.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 			children = (
 				351228282BA82B110079FEDD /* Simulator */,
 				351228272BA82AFD0079FEDD /* TreeData */,
+				3512282F2BA8A5800079FEDD /* AppGlobalActionState.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 				35DE59502BA1579B00000121 /* DirectoryType.swift in Sources */,
 				35442B9F2BA2CCB100D1E6F8 /* DeeplinkTreeItemViewFactory.swift in Sources */,
 				353F20C22B9F1AFF0032CE95 /* VoidCallBack.swift in Sources */,
+				351228302BA8A5800079FEDD /* AppGlobalActionState.swift in Sources */,
 				35DE595E2BA1665C00000121 /* LocalDataStorageService.swift in Sources */,
 				35DE59472BA0493E00000121 /* DeeplinkParamListView.swift in Sources */,
 				35DE59452BA042A500000121 /* DeeplinkParamInfoView.swift in Sources */,

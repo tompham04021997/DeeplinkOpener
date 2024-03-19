@@ -25,7 +25,6 @@ struct TreeFolderView: View {
             
             Text(title)
                 .font(.system(size: 16, weight: .regular))
-                .foregroundStyle(Color.white)
             
             Spacer()
         }

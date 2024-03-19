@@ -40,7 +40,6 @@ extension EmptyStateView {
                     Spacer()
                     Text(title)
                         .font(.largeTitle)
-                        .foregroundStyle(Color.white)
                     Spacer()
                 })
             }
@@ -56,7 +55,6 @@ extension EmptyStateView {
                     Spacer()
                     Text(message)
                         .font(.caption)
-                        .foregroundStyle(Color.white)
                     Spacer()
                 })
             }

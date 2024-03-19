@@ -1,0 +1,101 @@
+2024-03-18 11:07:45 +0000  Initial pipeline context: <IDEDistributionProcessingPipelineContext: 0x2d1908a80; archive(resolved)="<IDEArchive: 0x6000a99f9560>", distributionTask(resolved)="2", distributionDestination(resolved)="1", distributionMethod(resolved)="<IDEDistributionMethodDevelopmentSignedMac: 0x60000feea0f0>", team(resolved)="<IDEProvisioningDisambiguatableBasicTeam: 0x60000a476200; teamID='8G29ZZ5JTD', teamName='Pham Anh Tuan', teamType='Individual', username='phamanhtuancross@gmail.com', isFreeProvisioningTeam='0'>">
+	Chain (13, self inclusive):
+	<IDEDistributionProcessingPipelineContext: 0x2d1908a80; archive = "<IDEArchive: 0x6000a99f9560>", distributionMethod="<IDEDistributionMethodDevelopmentSignedMac: 0x60000feea0f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x60000a476200; teamID='8G29ZZ5JTD', teamName='Pham Anh Tuan', teamType='Individual', username='phamanhtuancross@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionProcessingPipelineContext: 0x52c88da00; archive = "<IDEArchive: 0x6000a99f9560>", distributionMethod="<IDEDistributionMethodDevelopmentSignedMac: 0x60000feea0f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x60000a476200; teamID='8G29ZZ5JTD', teamName='Pham Anh Tuan', teamType='Individual', username='phamanhtuancross@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x52c8897e0; archive = "<IDEArchive: 0x6000a99f9560>", distributionMethod="<IDEDistributionMethodDevelopmentSignedMac: 0x60000feea0f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x60000a476200; teamID='8G29ZZ5JTD', teamName='Pham Anh Tuan', teamType='Individual', username='phamanhtuancross@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x2b73ff790; archive = "<IDEArchive: 0x6000a99f9560>", distributionMethod="<IDEDistributionMethodDevelopmentSignedMac: 0x60000feea0f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x60000a476200; teamID='8G29ZZ5JTD', teamName='Pham Anh Tuan', teamType='Individual', username='phamanhtuancross@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x2d039fe70; archive = "<IDEArchive: 0x6000a99f9560>", distributionMethod="<IDEDistributionMethodDevelopmentSignedMac: 0x60000feea0f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x60000a476200; teamID='8G29ZZ5JTD', teamName='Pham Anh Tuan', teamType='Individual', username='phamanhtuancross@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x2dac1a890; archive = "<IDEArchive: 0x6000a99f9560>", distributionMethod="<IDEDistributionMethodDevelopmentSignedMac: 0x60000feea0f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x60000a476200; teamID='8G29ZZ5JTD', teamName='Pham Anh Tuan', teamType='Individual', username='phamanhtuancross@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x543624470; archive = "<IDEArchive: 0x6000a99f9560>", distributionMethod="<IDEDistributionMethodDevelopmentSignedMac: 0x60000feea0f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x60000a476200; teamID='8G29ZZ5JTD', teamName='Pham Anh Tuan', teamType='Individual', username='phamanhtuancross@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x2d70c7a30; archive = "<IDEArchive: 0x6000a99f9560>", distributionMethod="<IDEDistributionMethodDevelopmentSignedMac: 0x60000feea0f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x60000a476200; teamID='8G29ZZ5JTD', teamName='Pham Anh Tuan', teamType='Individual', username='phamanhtuancross@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x50dbffb60; archive = "<IDEArchive: 0x6000a99f9560>", distributionMethod="<IDEDistributionMethodDevelopmentSignedMac: 0x60000feea0f0>", team="(null)">
+	<IDEDistributionContext: 0x52c8ba6c0; archive = "<IDEArchive: 0x6000a99f9560>", distributionMethod="<IDEDistributionMethodDevelopmentSignedMac: 0x60000feea0f0>", team="(null)">
+	<IDEDistributionContext: 0x549ebbf30; archive = "<IDEArchive: 0x6000a99f9560>", distributionMethod="(null)", team="(null)">
+	<IDEDistributionContext: 0x5430b6aa0; archive = "<IDEArchive: 0x6000a99f9560>", distributionMethod="(null)", team="(null)">
+	<IDEDistributionContext: 0x5430178c0; archive = "<IDEArchive: 0x6000a99f9560>", distributionMethod="(null)", team="(null)">
+</IDEDistributionProcessingPipelineContext: 0x2d1908a80>
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionCreateDestRootStep
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionCopyItemStep
+2024-03-18 11:07:45 +0000  Running /usr/bin/ditto '-V' '/Users/tuan.pham/Library/Developer/Xcode/Archives/2024-03-18/SBDeeplinkOpener 18-03-2024, 18.02.xcarchive/Products/Applications/SBDeeplinkOpener.app' '/var/folders/rn/n7s0q0891m1gpx8tmqdl0ldc0000gr/T/XcodeDistPipeline.~~~gkuOOG/Root/Applications/SBDeeplinkOpener.app'
+2024-03-18 11:07:45 +0000  >>> Copying /Users/tuan.pham/Library/Developer/Xcode/Archives/2024-03-18/SBDeeplinkOpener 18-03-2024, 18.02.xcarchive/Products/Applications/SBDeeplinkOpener.app 
+2024-03-18 11:07:45 +0000  copying file ./Contents/_CodeSignature/CodeResources ... 
+2024-03-18 11:07:45 +0000  3907 bytes for ./Contents/_CodeSignature/CodeResources
+2024-03-18 11:07:45 +0000  copying file ./Contents/MacOS/SBDeeplinkOpener ... 
+2024-03-18 11:07:45 +0000  5145664 bytes for ./Contents/MacOS/SBDeeplinkOpener
+2024-03-18 11:07:45 +0000  copying file ./Contents/Resources/en.lproj/Localizable.strings ... 
+2024-03-18 11:07:45 +0000  1764 bytes for ./Contents/Resources/en.lproj/Localizable.strings
+2024-03-18 11:07:45 +0000  copying file ./Contents/Resources/AppIcon.icns ... 
+2024-03-18 11:07:45 +0000  72204 bytes for ./Contents/Resources/AppIcon.icns
+2024-03-18 11:07:45 +0000  copying file ./Contents/Resources/Lottie_Lottie.bundle/Contents/Resources/PrivacyInfo.xcprivacy ... 
+2024-03-18 11:07:45 +0000  599 bytes for ./Contents/Resources/Lottie_Lottie.bundle/Contents/Resources/PrivacyInfo.xcprivacy
+2024-03-18 11:07:45 +0000  copying file ./Contents/Resources/Lottie_Lottie.bundle/Contents/Info.plist ... 
+2024-03-18 11:07:45 +0000  1116 bytes for ./Contents/Resources/Lottie_Lottie.bundle/Contents/Info.plist
+2024-03-18 11:07:45 +0000  copying file ./Contents/Resources/Assets.car ... 
+2024-03-18 11:07:45 +0000  545768 bytes for ./Contents/Resources/Assets.car
+2024-03-18 11:07:45 +0000  copying file ./Contents/Resources/loading_animation.json ... 
+2024-03-18 11:07:45 +0000  24489 bytes for ./Contents/Resources/loading_animation.json
+2024-03-18 11:07:45 +0000  copying file ./Contents/Info.plist ... 
+2024-03-18 11:07:45 +0000  1513 bytes for ./Contents/Info.plist
+2024-03-18 11:07:45 +0000  copying file ./Contents/PkgInfo ... 
+2024-03-18 11:07:45 +0000  8 bytes for ./Contents/PkgInfo
+2024-03-18 11:07:45 +0000  /usr/bin/ditto exited with 0
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionEmbedProfileStep
+2024-03-18 11:07:45 +0000  Skipping profile for item: <IDEDistributionItem: 0x6000a9871380; bundleID='tom.pham.deeplinkOpener.SBDeeplinkOpener', path='<DVTFilePath:0x6000852ca080:'/Users/tuan.pham/Library/Developer/Xcode/Archives/2024-03-18/SBDeeplinkOpener 18-03-2024, 18.02.xcarchive/Products/Applications/SBDeeplinkOpener.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x6000b1ee6fd0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000407e8000; name='Apple Development: Pham Anh Tuan (X3HVSF4L5R)', hash='1812103BB81C562CACE1241F87AE12115311B0CE', serialNumber='DCD102225EBDB2C67CEC22AF0A99F6F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-03-18 03:54:35 +0000''>', entitlements='{
+}', teamID='8G29ZZ5JTD', identifier='tom.pham.deeplinkOpener.SBDeeplinkOpener', executablePath='<DVTFilePath:0x600091373c00:'/Users/tuan.pham/Library/Developer/Xcode/Archives/2024-03-18/SBDeeplinkOpener 18-03-2024, 18.02.xcarchive/Products/Applications/SBDeeplinkOpener.app/Contents/MacOS/SBDeeplinkOpener'>', hardenedRuntime='0'>'>
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionInfoPlistStep
+2024-03-18 11:07:45 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionAppThinningPlistStep
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionCompileBitcodeStep
+2024-03-18 11:07:45 +0000  Skipping step: IDEDistributionCompileBitcodeStep because it said so
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionCodeSlimmingStep
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionCopyBCSymbolMapsStep
+2024-03-18 11:07:45 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionSymbolsStep
+2024-03-18 11:07:45 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionAppThinningStep
+2024-03-18 11:07:45 +0000  Skipping step: IDEDistributionAppThinningStep because it said so
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionArchThinningStep
+2024-03-18 11:07:45 +0000  Item /Users/tuan.pham/Library/Developer/Xcode/Archives/2024-03-18/SBDeeplinkOpener 18-03-2024, 18.02.xcarchive/Products/Applications/SBDeeplinkOpener.app doesn't have the entitlement com.apple.developer.web-browser-engine.host enabled, returning ["arm64e"]
+2024-03-18 11:07:45 +0000  Archs to thin for item /Users/tuan.pham/Library/Developer/Xcode/Archives/2024-03-18/SBDeeplinkOpener 18-03-2024, 18.02.xcarchive/Products/Applications/SBDeeplinkOpener.app are ["arm64e"]
+2024-03-18 11:07:45 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/rn/n7s0q0891m1gpx8tmqdl0ldc0000gr/T/XcodeDistPipeline.~~~gkuOOG/Root/Applications/SBDeeplinkOpener.app/Contents/MacOS/SBDeeplinkOpener' '-verify_arch' 'arm64e'
+2024-03-18 11:07:45 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2024-03-18 11:07:45 +0000  Skipping architecture thinning for item "SBDeeplinkOpener" because arch "arm64e" wasn't found
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionODRStep
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionStripXattrsStep
+2024-03-18 11:07:45 +0000  Skipping stripping extended attributes because the codesign step will strip them.
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionCodesignStep
+2024-03-18 11:07:45 +0000  Entitlements for <IDEDistributionItem: 0x6000a9871380; bundleID='tom.pham.deeplinkOpener.SBDeeplinkOpener', path='<DVTFilePath:0x6000852ca080:'/Users/tuan.pham/Library/Developer/Xcode/Archives/2024-03-18/SBDeeplinkOpener 18-03-2024, 18.02.xcarchive/Products/Applications/SBDeeplinkOpener.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x6000b1ee6fd0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000407e8000; name='Apple Development: Pham Anh Tuan (X3HVSF4L5R)', hash='1812103BB81C562CACE1241F87AE12115311B0CE', serialNumber='DCD102225EBDB2C67CEC22AF0A99F6F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-03-18 03:54:35 +0000''>', entitlements='{
+}', teamID='8G29ZZ5JTD', identifier='tom.pham.deeplinkOpener.SBDeeplinkOpener', executablePath='<DVTFilePath:0x600091373c00:'/Users/tuan.pham/Library/Developer/Xcode/Archives/2024-03-18/SBDeeplinkOpener 18-03-2024, 18.02.xcarchive/Products/Applications/SBDeeplinkOpener.app/Contents/MacOS/SBDeeplinkOpener'>', hardenedRuntime='0'>'>: {
+}
+2024-03-18 11:07:45 +0000  Associated App Clip Identifiers Filter: Skipping because "com.apple.developer.associated-appclip-app-identifiers" is not present
+2024-03-18 11:07:45 +0000  Entitlements for <IDEDistributionItem: 0x6000a9871380; bundleID='tom.pham.deeplinkOpener.SBDeeplinkOpener', path='<DVTFilePath:0x6000852ca080:'/Users/tuan.pham/Library/Developer/Xcode/Archives/2024-03-18/SBDeeplinkOpener 18-03-2024, 18.02.xcarchive/Products/Applications/SBDeeplinkOpener.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x6000b1ee6fd0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x600044862100; name='Apple Development: Pham Anh Tuan (X3HVSF4L5R)', hash='1812103BB81C562CACE1241F87AE12115311B0CE', serialNumber='DCD102225EBDB2C67CEC22AF0A99F6F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-03-18 03:54:35 +0000''>', entitlements='{
+}', teamID='8G29ZZ5JTD', identifier='tom.pham.deeplinkOpener.SBDeeplinkOpener', executablePath='<DVTFilePath:0x600091373c00:'/Users/tuan.pham/Library/Developer/Xcode/Archives/2024-03-18/SBDeeplinkOpener 18-03-2024, 18.02.xcarchive/Products/Applications/SBDeeplinkOpener.app/Contents/MacOS/SBDeeplinkOpener'>', hardenedRuntime='0'>'> are: {
+}
+2024-03-18 11:07:45 +0000  Writing entitlements for <IDEDistributionItem: 0x6000a9871380; bundleID='tom.pham.deeplinkOpener.SBDeeplinkOpener', path='<DVTFilePath:0x6000852ca080:'/Users/tuan.pham/Library/Developer/Xcode/Archives/2024-03-18/SBDeeplinkOpener 18-03-2024, 18.02.xcarchive/Products/Applications/SBDeeplinkOpener.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x6000b1ee6fd0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000448621c0; name='Apple Development: Pham Anh Tuan (X3HVSF4L5R)', hash='1812103BB81C562CACE1241F87AE12115311B0CE', serialNumber='DCD102225EBDB2C67CEC22AF0A99F6F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-03-18 03:54:35 +0000''>', entitlements='{
+}', teamID='8G29ZZ5JTD', identifier='tom.pham.deeplinkOpener.SBDeeplinkOpener', executablePath='<DVTFilePath:0x600091373c00:'/Users/tuan.pham/Library/Developer/Xcode/Archives/2024-03-18/SBDeeplinkOpener 18-03-2024, 18.02.xcarchive/Products/Applications/SBDeeplinkOpener.app/Contents/MacOS/SBDeeplinkOpener'>', hardenedRuntime='0'>'> to: /var/folders/rn/n7s0q0891m1gpx8tmqdl0ldc0000gr/T/XcodeDistPipeline.~~~gkuOOG/entitlements~~~zh9oZL
+2024-03-18 11:07:45 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1812103BB81C562CACE1241F87AE12115311B0CE' '--entitlements' '/var/folders/rn/n7s0q0891m1gpx8tmqdl0ldc0000gr/T/XcodeDistPipeline.~~~gkuOOG/entitlements~~~zh9oZL' '--generate-entitlement-der' '--strip-disallowed-xattrs' '--preserve-metadata=identifier,flags,runtime' '/var/folders/rn/n7s0q0891m1gpx8tmqdl0ldc0000gr/T/XcodeDistPipeline.~~~gkuOOG/Root/Applications/SBDeeplinkOpener.app'
+2024-03-18 11:07:45 +0000  /var/folders/rn/n7s0q0891m1gpx8tmqdl0ldc0000gr/T/XcodeDistPipeline.~~~gkuOOG/Root/Applications/SBDeeplinkOpener.app: replacing existing signature
+2024-03-18 11:07:45 +0000  /var/folders/rn/n7s0q0891m1gpx8tmqdl0ldc0000gr/T/XcodeDistPipeline.~~~gkuOOG/Root/Applications/SBDeeplinkOpener.app: signed app bundle with Mach-O universal (x86_64 arm64) [tom.pham.deeplinkOpener.SBDeeplinkOpener]
+2024-03-18 11:07:45 +0000  /usr/bin/codesign exited with 0
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionZipODRItemStep
+2024-03-18 11:07:45 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionSkipPackagingStep
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionAppStoreInformationStep
+2024-03-18 11:07:45 +0000  Skipping step: IDEDistributionAppStoreInformationStep because it said so
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionGenerateProcessedDistributionItems
+2024-03-18 11:07:45 +0000  IDEDistributionItem init <DVTFilePath:0x6000911c4a00:'/var/folders/rn/n7s0q0891m1gpx8tmqdl0ldc0000gr/T/XcodeDistPipeline.~~~gkuOOG/Root/Applications/SBDeeplinkOpener.app'>
+2024-03-18 11:07:45 +0000  [OPTIONAL] Didn't find embedded provisioning profile for <DVTFilePath:0x6000911c4a00:'/var/folders/rn/n7s0q0891m1gpx8tmqdl0ldc0000gr/T/XcodeDistPipeline.~~~gkuOOG/Root/Applications/SBDeeplinkOpener.app'>: Error Domain=NSCocoaErrorDomain Code=4 "No file at <DVTFilePath:0x600020dde2e0:'/var/folders/rn/n7s0q0891m1gpx8tmqdl0ldc0000gr/T/XcodeDistPipeline.~~~gkuOOG/Root/Applications/SBDeeplinkOpener.app/Contents/embedded.provisionprofile'>" UserInfo={NSLocalizedDescription=No file at <DVTFilePath:0x600020dde2e0:'/var/folders/rn/n7s0q0891m1gpx8tmqdl0ldc0000gr/T/XcodeDistPipeline.~~~gkuOOG/Root/Applications/SBDeeplinkOpener.app/Contents/embedded.provisionprofile'>}
+2024-03-18 11:07:45 +0000  Processing step: IDEDistributionCreateManifestStep
+2024-03-18 11:07:45 +0000  Skipping step: IDEDistributionCreateManifestStep because it said so

@@ -27,11 +27,15 @@ internal enum Asset {
   internal static let accentColor = ColorAsset(name: "AccentColor")
   internal static let copy = ImageAsset(name: "copy")
   internal static let delete = ImageAsset(name: "delete")
+  internal static let downArrow = ImageAsset(name: "down_arrow")
   internal static let folder = ImageAsset(name: "folder")
   internal static let `import` = ImageAsset(name: "import")
   internal static let iphone = ImageAsset(name: "iphone")
   internal static let link = ImageAsset(name: "link")
+  internal static let play = ImageAsset(name: "play")
   internal static let plus = ImageAsset(name: "plus")
+  internal static let save = ImageAsset(name: "save")
+  internal static let trash = ImageAsset(name: "trash")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

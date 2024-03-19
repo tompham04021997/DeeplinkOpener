@@ -11,14 +11,12 @@ import Combine
 
 final class SimulatorListViewModel: ObservableObject {
     
-    @Published var items: [SimulatorInfoViewModel] = []
-    @Published var selectedItem: SimulatorInfoViewModel = .init(
-        entity: Simulator(
-            version: .empty,
-            name: .empty,
-            uuid: .empty,
-            state: .shutdown
-        )
+    @Published var items: [Simulator] = []
+    @Published var selectedItem: Simulator = Simulator(
+        version: .empty,
+        name: .empty,
+        uuid: .empty,
+        state: .shutdown
     )
     
     @LazyInjected(\.simulatorDataObserverManager) var simulatorDataObserverManager
@@ -30,7 +28,6 @@ final class SimulatorListViewModel: ObservableObject {
             .$selectedSimulator
             .compactMap { $0 }
             .removeDuplicates()
-            .map { SimulatorInfoViewModel(entity: $0) }
             .receive(on: DispatchQueue.main)
             .assign(to: \.selectedItem, on: self)
             .store(in: &cancellables)
@@ -39,9 +36,6 @@ final class SimulatorListViewModel: ObservableObject {
             .$simulators
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
-            .map { simulators -> [SimulatorInfoViewModel] in
-                return simulators.map { SimulatorInfoViewModel(entity: $0) }
-            }
             .assign(to: \.items, on: self)
             .store(in: &cancellables)
     }

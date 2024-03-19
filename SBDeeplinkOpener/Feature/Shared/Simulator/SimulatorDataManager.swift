@@ -17,7 +17,7 @@ final class SimulatorDataObserverManager: ObservableObject {
     @Published var selectedSimulator: Simulator?
     
     init() {
-        simulators = manager.getAvailableSimulators()
+        simulators = manager.getAvailableSimulators().filter({ !$0.name.contains("iPhoneSE")} )
         
         if let availableBootedSimulator = simulators.first(where: { $0.state == .booted }) {
             selectedSimulator = availableBootedSimulator

@@ -16,15 +16,16 @@ struct SimulatorListView: View {
         GeometryReader { proxy in
             ScrollView {
                 VStack(spacing: .zero) {
-                    ForEach(viewModel.items, id: \.id) { item in
+                    ForEach(viewModel.items, id: \.uuid) { item in
                         SimulatorInfoView(
-                            viewModel: item,
+                            simulator: item,
                             selectionSimulator: viewModel.selectedItem,
                             onSelection: {
-                                viewModel.updateSelectedSimulator(item.entity)
+                                viewModel.updateSelectedSimulator(item)
                                 onSelection?()
                             }
-                        ).tag(item.id)
+                        )
+                        .tag(item.uuid)
                     }
                 }
             }

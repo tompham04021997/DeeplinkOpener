@@ -72,4 +72,11 @@ extension Container {
         }
         .scope(.shared)
     }
+    
+    var appGlobalActionState: Factory<AppGlobalActionState> {
+        self {
+            AppGlobalActionState()
+        }
+        .scope(.singleton)
+    }
 }

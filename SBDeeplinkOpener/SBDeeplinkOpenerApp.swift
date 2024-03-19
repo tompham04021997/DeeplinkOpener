@@ -14,5 +14,7 @@ struct SBDeeplinkOpenerApp: App {
         WindowGroup {
             ContentView()
         }
+        .windowToolbarStyle(.unifiedCompact)
+        .windowStyle(.hiddenTitleBar)
     }
 }

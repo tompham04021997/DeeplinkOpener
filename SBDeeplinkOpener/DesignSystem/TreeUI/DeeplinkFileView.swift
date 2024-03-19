@@ -25,7 +25,6 @@ struct DeeplinkFileView: View {
             
             Text(title)
                 .font(.system(size: 12, weight: .regular))
-                .foregroundStyle(Color.white)
             
             Spacer()
         }

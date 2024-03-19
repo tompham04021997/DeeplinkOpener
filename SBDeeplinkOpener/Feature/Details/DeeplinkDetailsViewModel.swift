@@ -49,6 +49,7 @@ final class DeeplinkDetailsViewModel: ObservableObject {
     @LazyInjected(\.deeplinkOpener) var deeplinkOpener
     @LazyInjected(\.treeDataManager) var treeDataManager
     @LazyInjected(\.simulatorDataObserverManager) var simulatorDataObserverManager
+    @LazyInjected(\.appGlobalActionState) var appGlobalActionState
     
     init() {
         setupBindingDataFlow()
@@ -116,7 +117,7 @@ extension DeeplinkDetailsViewModel {
             }
             .store(in: &cancellables)
         
-        $onOpenDeeplinkTrigger
+        appGlobalActionState.$onRunDeeplink
             .receive(on: DispatchQueue.global(qos: .background))
             .filter { $0 }
             .map { _ in (self.deeplink, self.simulatorDataObserverManager.selectedSimulator) }
